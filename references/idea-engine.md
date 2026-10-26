@@ -31,7 +31,7 @@ Use a *different* generator for each concept. Each concept = one sentence:
 | **Process / transformation** | Visitor drives the subject's real process | Scroll roasts the bean: green → yellow → first crack (screen shake) → dark |
 | **Medium parody** | The site imitates the medium it lives in | The site is a café receipt printing as you scroll; items are the menu |
 | **Toy / game** | Navigation is play | Drag a pour-over kettle; the water you pour fills sections |
-| **Material world** | One material governs every transition | Everything is liquid: sections pour into each other, type ripples |
+| **Material world** | The subject's material leads the transitions (other things from its world can join) | Everything is liquid: sections pour into each other, type ripples |
 | **Scale shift** | Zoom from macro to micro (or reverse) | Zoom from a world map into a farm into a bean into the cell of its flavour |
 | **Persistent character** | One mascot/object stays and reacts | A single bean character watches the cursor and travels with you |
 
@@ -44,6 +44,9 @@ Score each concept 1–5 on:
 3. **Buildability code-only** — can it look *premium* with shaders, type, SVG,
    CSS 3D, canvas or procedural Three.js, without photos you do not have?
 4. **Usefulness** — does the journey also show the offering, prices, features, CTA?
+5. **Motion wow** — does the concept's core *require* the subject's material to
+   physically move (pour, crack, swarm, bloom), and can the visitor push it? A concept
+   that's mostly illustration plus line drawing scores ≤ 2.
 
 Pick the highest total, tie-break toward **memorability**. Never merge two concepts
 into a mush; you may borrow *one* device from the runner-up.
@@ -60,7 +63,8 @@ Write which one you chose in the director's sheet.
 
 ```text
 THE SITE WHERE YOU: ...
-WORLD / MATERIAL: ...                      (one material governs transitions)
+WORLD / MATERIAL: ...                      (the material that leads; others from the world may join)
+MOTION: living material · 5-second wow · subject motion list · input → material
 HERO SIGNATURE MOVE: ...                   (mechanism + what changes)
 CONTINUITY DEVICE: ...                     (what persists/travels between sections)
 SECTION JOURNEY: 1 ... → 2 ... → 3 ... → close ...   (each is a *state* of the world)

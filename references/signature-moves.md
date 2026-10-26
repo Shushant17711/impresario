@@ -191,6 +191,70 @@ paths (logos, letters), `TorusKnot`/`Icosahedron` with `MeshPhysicalMaterial`
 (`transmission`, `roughness`, `iridescence`, `clearcoat`), `RoomEnvironment` for
 reflections, `ACESFilmicToneMapping`. Cap `devicePixelRatio` at 2, pause when offscreen.
 
+## Living material (§16–§20): the motion that makes people say "oh"
+
+Pick by what the subject's stuff *does*. These are meant to be combined with §3
+(scrub) and §6 (pointer) so the visitor drives the material.
+
+### §16 Goo, drips and merging blobs (SVG filter, any DOM/SVG shapes)
+```html
+<svg width="0" height="0"><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="10" result="b"/>
+  <feColorMatrix in="b" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9"/></filter></svg>
+<div class="drips" style="filter:url(#goo)"><span class="pool"></span><i></i><i></i><i></i></div>
+```
+```js
+gsap.utils.toArray('.drips i').forEach((d, k) => gsap.timeline({ repeat: -1, delay: k * .7 })
+  .fromTo(d, { y: 0, scaleY: 1 }, { scaleY: 1.8, duration: 1.2, ease: 'sine.in' })   // swell and neck
+  .to(d, { y: '60vh', scaleY: 1.2, duration: .9, ease: 'power2.in' })                // fall
+  .set(d, { y: 0, scaleY: 1 }));
+```
+Blobs that overlap merge like liquid. Scale stdDeviation with size; on phone, use a
+smaller blur so thin type survives. Use it for honey, ink, wax, lava, slime and mercury.
+
+### §17 Sloshing liquid surface (1-D spring chain, canvas)
+```js
+const N = 60, h = new Float32Array(N), v = new Float32Array(N);
+function step(level) {                       // level 0..1 from scroll; call every frame
+  for (let i = 0; i < N; i++) { v[i] += (-h[i]) * 0.02; v[i] *= 0.985; }        // spring to rest
+  for (let p = 0; p < 4; p++) for (let i = 0; i < N; i++) {                      // spread waves
+    const l = h[i - 1] ?? h[i], r = h[i + 1] ?? h[i]; v[i] += (l + r - 2 * h[i]) * 0.05; }
+  for (let i = 0; i < N; i++) h[i] += v[i];
+  draw(level);   // fill a path: surface y = H*(1-level) + h[i]*k, add a highlight line
+}
+const splash = (x, force) => { v[Math.round(x * (N - 1))] -= force; };           // click / drop
+// scroll velocity tilts the liquid:  v[0] += vel*.002; v[N-1] -= vel*.002
+```
+Use it for any container that fills: a jar, a glass, a tank, a battery, a progress bar
+that's actually liquid. Pair it with §16 drips falling into it, so `splash()` fires
+on impact.
+
+### §18 Swarm / flock (boids-lite, canvas)
+Each agent: `steer = cohesion*(centre-p) + align*(avgV-v) + separate*Σ(p-q)/d² + seek*(target-p)`.
+Clamp the speed and draw short trails. The target is the pointer, a word's sampled
+pixels (§9) or the next section's anchor, so the swarm *carries* the visitor's
+attention down the page. Use it for bees, birds, fish, drones, sparks and data packets.
+
+### §19 Fly-to-target hand-offs (MotionPath + Flip)
+```js
+gsap.registerPlugin(MotionPathPlugin);
+gsap.to('.petal', { motionPath: { path: '#flight', align: '#flight', autoRotate: true },
+  scale: .4, ease: 'none', scrollTrigger: { trigger: '.jars', start: 'top 90%', end: 'top 30%', scrub: 1 } });
+```
+A piece of the hero physically travels into the next section's object: a petal onto
+its jar's label, a drop into the cup, a shard back into the screen. This is the
+strongest continuity device there is.
+
+### §20 Fracture and heal (radial shards, DOM or SVG)
+From an impact point, cut the element into 10–16 wedges (`clip-path: polygon(...)` with
+jittered angles and 2–3 ring radii). Animate each wedge `x/y` along its outward normal,
+with `rotation`, a little `z` under `perspective`, and a stagger by distance. Reverse it
+on scroll to heal. Add a fine crack-line SVG first (stroke-dash draw, 120 ms) for the
+"impact" beat. Use it for repairs, glass, ice, eggs, stone and breaking news.
+
+Also strong: cloth or rope via Verlet constraints (a flag, a ribbon, a hanging sign
+that swings with scroll velocity), and smoke or steam via a curl-noise shader (§5
+with `uVel` driving turbulence).
+
 ## Performance and fallback essentials
 - Animate `transform`, `opacity`, `clip-path`, CSS vars, shader uniforms; avoid layout props.
 - One owner per property (don't let CSS transitions and GSAP fight).

@@ -78,7 +78,7 @@ Every site below does most of these. Generic AI sites do almost none.
 - **Move:** strong *world material* (ice) applied to everything — type, transitions,
   UI — plus a scroll camera through discrete scenes.
 - **Why:** total material consistency makes it feel like a single crafted object.
-- **Translation:** pick ONE material for the subject (rust, honey, smoke, chrome, solder, glacier,
+- **Translation:** pick the subject's leading material (rust, honey, smoke, chrome, solder, glacier,
   clay, neon, water) and let every transition be that material behaving
   (rust spreads, honey pours, smoke disperses).
 

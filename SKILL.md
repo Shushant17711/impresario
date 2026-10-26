@@ -23,9 +23,11 @@ subject; you hand back the site people describe to friends as **"the site where 
    plausible one and build).
 2. **Concept before code.** A great site is one idea executed everywhere. Effects
    bolted on a template are the failure mode you exist to prevent.
-3. **Heavy animation, but choreographed.** The page should be in motion and *flow*:
-   scroll drives a journey, sections hand off to each other, one thing persists.
-   Never "static sections that fade up".
+3. **Matter in motion, choreographed.** The page should feel *alive*: the subject's
+   own material moves: it pours, drips, cracks, blooms, swarms, bends, glows.
+   Scroll drives a journey, sections hand off, one thing persists. Lines drawing and
+   things fading in are supporting motion, not the show. Never "static sections that
+   fade up", and never "a nice illustration that animates" either.
 4. **Code-native beauty.** You have no photo shoot and no 3D artist. Shaders, kinetic
    type, procedural 3D, SVG, CSS 3D, particles and grain are your camera. Never
    ship grey boxes, emoji art or random stock URLs as the design.
@@ -34,9 +36,10 @@ subject; you hand back the site people describe to friends as **"the site where 
 
 ## The run
 
-Required reading is only four files, at the stage that needs them:
-`exemplars.md` (stage 2), `idea-engine.md` + `colour.md` (stage 3),
-`signature-moves.md` (stages 4–5). Everything under "Deeper references" is optional.
+Required reading is four files, at the stage that needs them: `exemplars.md`
+(stage 2), `idea-engine.md` (stage 3), `signature-moves.md` (stage 4), and
+`colour.md` (stage 5, the colour and type pass). Invention and motion come first;
+colour and type serve them. Everything under "Deeper references" is optional.
 
 ### 1. Absorb (no questions)
 Read the request. Extract subject, audience, the one action (buy / book / hire /
@@ -54,9 +57,7 @@ exemplars file is enough; don't stall on it.
 Follow `references/idea-engine.md`: mine the subject (verb, material, dimension,
 signature object, ritual, medium) → generate **5 concepts with 5 different
 generators** → score → pick the boldest buildable → make it twice as bold once →
-pass the anti-generic gate. Then do palette and type with `references/colour.md`
-(sample 8 subject colours → pick a structure → harmonise: one home ground for ≥ 70% of the scroll, ≤ 2 named
-ground *events*, never a repaint per section, one governing hue → swap test; type must look chosen, not like a fallback). Write the director's sheet
+pass the anti-generic gate. Don't think about colour yet. Write the director's sheet
 to `.impresario/direction.md` (keep it short). Don't show the user a menu of concepts; choose.
 
 ### 4. Choreograph the journey
@@ -89,15 +90,39 @@ ways out, use both:
 Contact-sheet check: if three consecutive frames have the same skeleton, redesign one. Apply the laws of flow
 in `references/signature-moves.md`.
 
-### 5. Build
+**Motion ambition (required for websites).** Write a `MOTION` block in the director's
+sheet before coding:
+- **Living material:** what physically *behaves* in the signature move: fluid, goo,
+  cloth, particles/swarm, springs/physics, cracks, smoke, light, deformation. It must
+  be something more than a path drawing or an element translating. Pick the strongest
+  rendering you can ship (`signature-moves.md` §5, §9, §16–§20): shader > canvas
+  sim > SVG filter > DOM.
+- **5-second wow:** what happens in the first 5 seconds that makes someone say "oh"?
+- **Subject motion list:** every moment where the subject's own stuff moves (honey
+  drips off the heading, a petal flies onto its jar, a crack heals). There's **no cap**
+  on these; aim for one per screen of scroll. Each needs a reason in the story.
+- **Input → material:** at least one visitor input (scroll speed, pointer, click,
+  drag) that visibly pushes the material, not just moves a cursor.
+
+### 5. Colour and type pass
+Now read `references/colour.md` and dress the concept: sample 8 subject colours →
+pick a structure → harmonise (one home ground for ≥ 70% of the scroll, ≤ 2 named
+ground events, never a repaint per section, one governing hue) → swap test; type must
+look chosen. Colour must *serve the motion*: choose grounds the material reads
+against (honey reads on dark wood or glass, not on a honey ground). If a colour rule
+would kill the signature move, keep the move and solve the colour another way.
+
+### 6. Build
 - Start from `assets/motion-kit.js` (copy it into the project) + the CDN stack in
   `signature-moves.md`; in React/Next/Vite use the npm equivalents.
 - Build the **signature move first**, in full fidelity, then the sections around it.
-- Craft layer is a menu, not a checklist: masked type reveals, cursor, magnetic CTAs,
-  velocity marquee/skew, clip-path reveals, one ground event, grain. Pick **at most three**
-  that the subject's material explains. These are *not* defaults: a labelled custom
-  cursor, a grain overlay, a preloader counter, a light→dark "climax" flip, a giant
-  wordmark footer. Every earlier run used all five, and that's why the sites look like siblings.
+- **Two different budgets. Don't confuse them:**
+  - *Subject motion* (the material behaving, from your MOTION block): **unlimited and
+    expected.** Build every item on the list. This is where the creativity lives.
+  - *Generic garnish* (labelled custom cursor, grain overlay, preloader counter, giant
+    wordmark footer, light→dark climax flip, magnetic buttons, velocity marquee): **at
+    most two**, and only if the subject explains them. Every early run used all of
+    them, and that's why those sites looked like siblings.
 - Art direction follows `references/colour.md`: palette structure and type chosen
   from the subject's world, never "neutral ground + one accent" or a default font
   pair. Type scale with real drama. `direction.md`, `craft.md`, `tells.md` go deeper.
@@ -105,7 +130,7 @@ in `references/signature-moves.md`.
   focus visible, `prefers-reduced-motion` shows final states, no-JS still readable.
 - Mobile: same idea, simplified mechanism, composed for 390 px — not shrunken desktop.
 
-### 6. Self-review loop (do not skip)
+### 7. Self-review loop (do not skip)
 Serve the project (`python3 -m http.server 8080` in the background) and capture it —
 no manifest or setup needed:
 
@@ -132,9 +157,14 @@ sheets yourself and say in the handoff that the score is self-assessed.
 | Criterion | Ask |
 | --- | --- |
 | Design (40%) | Composition, type drama, a palette and typeface that belong to *this* subject (swap test), detail; would a designer screenshot it? |
-| Creativity (20%) | Can I finish "the site where you ___"? Could another subject use it unchanged? |
+| Creativity (20%) | Can I finish "the site where you ___"? Could another subject use it unchanged? Does the material move like itself (wow), or only draw/fade? |
 | Usability (30%) | Clear offer + action, readable over effects, mobile composed, fast, escapable |
 | Content (10%) | Specific, confident copy in the subject's voice; no lorem, no buzzword soup |
+
+Watch it move before scoring: open the page (or `scenes.mjs --record`) and scroll it,
+because still frames hide motion quality. Ask: in the first 5 seconds, is there an
+"oh"? Does the material *behave*, or do things only fade, slide and draw? Is
+something of the subject moving on nearly every screen?
 
 Squint at the desktop sheet first. Can you name the colour world in two words? Do
 three consecutive frames share a skeleton? Is the signature element visible beyond
@@ -143,8 +173,10 @@ the hero?
 Anchors (use them, be harsh):
 - **4** — a template: hero + cards fading up; swap the logo and it fits any business.
 - **6** — competent and on-brand, with a nice effect, but the frames read as a
-  normal website with animation on top.
-- **8** — the contact sheet alone tells the story; at least one frame you'd show
+  normal website with animation on top, *or* a lovely illustration that only draws
+  and fades (no living material).
+- **8** — the subject's material visibly behaves and the visitor can push it; the
+  contact sheet alone tells the story; at least one frame you'd show
   someone; flow is continuous; phone is composed, not shrunk.
 - **10** — Awwwards Site of the Day: the idea is unmistakable in a single frame and
   every frame is finished.
@@ -168,7 +200,7 @@ If the signature move is an interaction (click, drag, type), define
 the slider). `shoot.mjs` runs it before capturing so the reviewer sees it working.
 Keep it side-effect free for real visitors; it only runs when called.
 
-### 7. Handoff
+### 8. Handoff
 Tell the user, briefly: the one-sentence concept, the journey beats, the signature
 move and how it is built, assumptions/placeholders you invented, how to run it, the
 review score and what you would push next. Show screenshots if the client can display

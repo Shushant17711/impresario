@@ -53,7 +53,7 @@ Choose the one the subject implies and write one line on why:
 
 | Structure | What the page looks like | Fits |
 | --- | --- | --- |
-| **Saturated ground** | The page *is* the subject's colour; text is a deep shade of the same hue | food, materials, brands with a colour |
+| **Saturated ground** | The page *is* the subject's colour; text is a deep shade of the same hue. Careful: the subject's own material then disappears against itself. If the material must be *seen moving* (honey, water, ink), put it on a contrasting ground instead | brands with a colour, posters |
 | **Tonal world** | One non-neutral hue over 6–9 lightness steps; colour comes from light and depth | sea, night, lab, forest, cold metal |
 | **Two-ink print** | Two strong inks overprinting (riso, screenprint, blueprint, cyanotype) | makers, music, posters, research |
 | **Chapter light** | One place whose light drifts *gradually* across the whole scroll (dawn → noon → dusk as one continuous gradient, never a repaint per section) | journeys, time, process |
