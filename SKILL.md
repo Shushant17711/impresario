@@ -108,7 +108,10 @@ sheet before coding:
 Now read `references/colour.md` and dress the concept: sample 8 subject colours →
 pick a structure → harmonise (one home ground for ≥ 70% of the scroll, ≤ 2 named
 ground events, never a repaint per section, one governing hue) → swap test; type must
-look chosen. Colour must *serve the motion*: choose grounds the material reads
+look chosen. The hero material must read as itself at a glance: iconic colour
+(honey = glowing amber, not cream), translucency rendered thin-bright/thick-deep, a
+truly dark or truly contrasting ground (never mid-tone mud), and type tinted by the
+world's light, not default cream or white (`colour.md` §3a). Colour must *serve the motion*: choose grounds the material reads
 against (honey reads on dark wood or glass, not on a honey ground). If a colour rule
 would kill the signature move, keep the move and solve the colour another way.
 
@@ -165,6 +168,9 @@ Watch it move before scoring: open the page (or `scenes.mjs --record`) and scrol
 because still frames hide motion quality. Ask: in the first 5 seconds, is there an
 "oh"? Does the material *behave*, or do things only fade, slide and draw? Is
 something of the subject moving on nearly every screen?
+
+Glance test: shrink a hero frame to a thumbnail. Can you name the material in one word,
+and does it glow against its ground? Cream-coloured honey or text on mud fails.
 
 Squint at the desktop sheet first. Can you name the colour world in two words? Do
 three consecutive frames share a skeleton? Is the signature element visible beyond

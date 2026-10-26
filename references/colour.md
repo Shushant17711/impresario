@@ -69,6 +69,31 @@ Choose the one the subject implies and write one line on why:
 - Keep contrast non-negotiable: body text 4.5:1, large text 3:1. On a saturated ground,
   use a deep or pale shade of the same hue before you reach for black or white.
 
+### 3a. The material must read as itself (recognition beats accuracy)
+Failure seen in a honey build: the agent sampled "May hawthorn honey: pale straw,
+almost cream" and rendered the hero honey in near-white cream, with cream body
+text on flat mud-brown. Every colour was technically real, and none of it read as
+honey. Visitors recognise a material by its **iconic colour + optical behaviour**,
+not by a rare true sample.
+
+- **Hero material = its iconic colour.** Honey is glowing amber-gold, water is
+  clear blue-green, rust is orange-brown, molten glass is incandescent. Use edge-case
+  variants (pale spring honey, grey seawater) only as *secondary* states, still
+  pushed toward the icon.
+- **Render the optics, not a flat fill.** Translucent materials (honey, glass, juice,
+  oil, resin) are *brighter and more saturated where thin* (light passes through) and
+  *deeper where thick*, with a sharp specular highlight. Never let them wash out to
+  white or cream. Metals have dark bodies with bright edges; smoke thins to the ground colour.
+- **The ground must make the material glow.** A mid-tone muddy ground (dark brown,
+  olive, grey at L 0.2–0.35 with low chroma) kills it. Go properly dark (L < 0.15,
+  tinted toward the material) with a soft glow from the material's light, or go
+  properly contrasting. "Brown because honey is brown" is mud.
+- **Type colour comes from the world's light, not paper.** On a dark ground, use
+  a light tone tinted by the material (honey-lit gold, ice-lit pale cyan), not
+  default cream/off-white `#f4e7c5`-type colours. Keep contrast ≥ 4.5:1 for body text.
+- **Glance test:** shrink a hero frame to a thumbnail. Would a stranger name the
+  material in one word? If not, fix the colour before anything else.
+
 ### 3b. Harmony: subject-derived is necessary, not sufficient
 Sampling the subject literally can give you a *list* (ten chart colours, every paint
 on the shelf) instead of a *palette*. The v2 portfolio painted ten full-screen chapters
