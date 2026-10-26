@@ -1,0 +1,53 @@
+{
+  "skill_name": "impresario",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Build a cinematic landing page for a shinobi character. As the visitor scrolls, a sheathed sword should draw in a believable way, and the character should feel like they move through the story. Make it work on mobile and do not make it look like a generic anime fan page.",
+      "expected_output": "A subject-specific concept and executable flagship prototype before surrounding site construction. Real illustrated/articulated sword and character assets support distinct entry, action and resolution compositions. Independent desktop/mobile recording review verifies the narrative; rectangles or a growing line are explicitly incomplete.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Create a launch site for a small ceramic studio. I want it to feel tactile and memorable rather than like a three-card SaaS template. Use the studio's making ritual as the source of the interaction and keep the page accessible.",
+      "expected_output": "A material/ritual-derived prototype where making or inspecting ceramics changes useful views or choices. Asset fidelity, native controls, complete content, no invented proof, and separate correctness and creative review; no decorative-motion quota.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Redesign this React dashboard so it is less dull, but it is still a serious operations tool. Add tasteful motion without turning it into a marketing page, and preserve keyboard navigation and data clarity.",
+      "expected_output": "App-screen rules rather than cinematic marketing scenes: clear hierarchy, restrained feedback motion, accessible primitives, no gratuitous ambient effects, and a verification checklist.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Build a creative website for a computer store. Do not make a basic frontend, static card grid, dashboard, or generic storefront. Make the products feel like physical machines in a working environment, with one visually dominant showpiece that transforms real product content on scroll or touch. A filter or comparison tray may support the experience but cannot count as the main creative interaction.",
+      "expected_output": "Intensity 3 or 4 with a scene-first useful workstation/workbench prototype. Entry, transformation and resolution substantially differ in composition and inspection/choice capability. Validate real assets, runtime ownership, phone/fallback states and current per-scene recordings; require independent creative review. A laptop opening followed by 5% scale/4deg tilt is not cinematic proof.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "Create a highly creative animated landing page for a custom motorcycle studio. I want a camera journey from the assembled motorcycle to an inspection of its engine and riding geometry, then a useful custom configuration. Do not make a plain hero followed by little hover animations. Keep the first-screen action clear and make the experience work on phones.",
+      "expected_output": "A tested flagship camera/inspection prototype before page expansion, with representative motorcycle assets, meaningful entry/transform/resolution composition change, useful configuration, touch/keyboard/reduced equivalents and independent recording-based creative acceptance. No phase counts as a separate motion and no obligatory autoplay loop.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "We are out of time and the computer-store website is finished. The laptop opens, then grows 5%, rotates four degrees and moves 18px. Lens blur and an add-to-bag thumbnail make five named motions if opening and expansion are counted separately. All lint, contrast and overflow checks passed. Can we call this cinematic and ship? Do not edit the site; review acceptance and give the next action.",
+      "expected_output": "Reject creative sign-off without actual independent desktop/mobile recording evidence. Explain same-composition micro-motion and inventory inflation, separate correctness from creative acceptance, and prototype a useful composition transformation before more page polish. Do not pretend descriptions alone measure visual impact.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "Build a photorealistic spatial fashion showroom like a real room with a camera journey and inspectable garments. We have only flat SVG garment silhouettes and no models, photos, video or generation tool. Do not ask me for a password or pretend any asset generation ran. What can you honestly deliver next?",
+      "expected_output": "Explicit fidelity blocker; request representative licensed/supplied assets or approval for an honestly stylized direction. A feasibility prototype or asset plan is labelled unaccepted, not photorealistic or finished immersive work. No silent downgrade to CSS perspective silhouettes.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "Create a logistics site where containers move from crane to truck to cargo ship in one continuous scroll narrative. Service content should appear as the journey changes. I want useful reframing and an intentional phone version, not six labelled motions and a card grid.",
+      "expected_output": "An original connected timeline treated as one journey with real handoffs, side-to-overhead camera/composition change, content-bearing transitions, fidelity-representative assets and native/phone/reduced paths. Prototype and independent scene-specific review precede site expansion. Do not copy supplied branding or claim source keywords verify 3D rendering.",
+      "files": []
+    }
+  ]
+}

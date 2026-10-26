@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Holloway Honey Farm — raw honey from one Herefordshire hillside</title>
+<meta name="description" content="A family honey farm with 41 hives on Holloway Lane, Herefordshire. Spring blossom, bramble &amp; clover, and late heather honey — at the honesty stand or by post.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath fill=%22%23E8A02C%22 d=%22M12 2l8.66 5v10L12 22l-8.66-5V7z%22/%3E%3C/svg%3E">
+<meta name="theme-color" content="#F3EAD3">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=gambarino@400&f[]=switzer@400,500,600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#jars">Skip to the jars</a>
+
+<canvas id="honey" aria-hidden="true"></canvas>
+
+<!-- opening ritual: one drop -->
+<div class="intro" aria-hidden="true">
+  <svg class="intro__drop" viewBox="0 0 40 120"><path d="M20 0 C20 40 4 70 4 92 a16 16 0 0 0 32 0 C36 70 20 40 20 0Z"/></svg>
+</div>
+
+<header class="nav">
+  <a class="nav__brand" href="#top" aria-label="Holloway Honey Farm, back to top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8.66 5v10L12 22l-8.66-5V7z"/></svg>
+    Holloway
+  </a>
+  <nav aria-label="Main">
+    <a href="#year" data-cursor="Read">The year</a>
+    <a href="#jars" data-cursor="Shop">Jars</a>
+    <a href="#visit" data-cursor="Visit">Visit</a>
+    <a href="#order" class="nav__basket" data-cursor="Order">Basket <span class="nav__count" aria-live="polite">0</span></a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <p class="hero__eyebrow">A family honey farm · Holloway Lane, Herefordshire · 41 hives</p>
+    <h1 id="hero-title" class="hero__word"><span class="mask"><span class="hero__line">Holloway</span></span></h1>
+    <p class="hero__tag"><span class="mask"><span class="hero__line">Honey that tastes like</span></span> <span class="mask"><span class="hero__line">the month it was made.</span></span></p>
+    <div class="hero__foot">
+      <p>Raw, unheated, never blended.<br>Kept by the same family since 1987.</p>
+      <a class="hero__cue" href="#year" data-cursor="Begin">Scroll through our year <span aria-hidden="true">↓</span></a>
+    </div>
+  </section>
+
+  <!-- THE YEAR -->
+  <section class="year" id="year" aria-labelledby="year-title">
+    <div class="year__stage">
+      <h2 id="year-title" class="year__label">The honey year <span>— watch it darken</span></h2>
+      <ol class="year__months" aria-hidden="true">
+        <li>Mar</li><li>Apr</li><li>May</li><li>Jun</li><li>Jul</li><li>Aug</li><li>Sep</li><li>Oct</li>
+        <span class="year__progress"></span>
+      </ol>
+
+      <div class="year__art" aria-hidden="true"><svg class="flora" viewBox="0 0 400 400"></svg></div>
+
+      <article class="season" data-season="0">
+        <p class="season__month"><span class="mask"><span>April</span></span></p>
+        <h3 class="season__name">Spring Blossom</h3>
+        <p class="season__notes">Hawthorn, apple and dandelion off the orchard next door. It sets thick and creamy, pale as butter, gentle as a Sunday.</p>
+        <p class="season__meta"><span>Pfund 20&nbsp;mm · White</span><strong>£8 · 340&nbsp;g</strong></p>
+      </article>
+      <article class="season" data-season="1">
+        <p class="season__month"><span class="mask"><span>June</span></span></p>
+        <h3 class="season__name">Bramble &amp; Clover</h3>
+        <p class="season__notes">The hedgerows go white with bramble and the bottom field goes pink with clover. Runny, golden, a little floral — our everyday jar.</p>
+        <p class="season__meta"><span>Pfund 48&nbsp;mm · Extra light amber</span><strong>£9 · 340&nbsp;g</strong></p>
+      </article>
+      <article class="season" data-season="2">
+        <p class="season__month"><span class="mask"><span>August</span></span></p>
+        <h3 class="season__name">Late Heather</h3>
+        <p class="season__notes">Twelve hives ride up onto the Black Mountains in the back of Dad's van. They come home with honey thick as jelly — smoky, almost bitter. People drive for this one.</p>
+        <p class="season__meta"><span>Pfund 95&nbsp;mm · Amber</span><strong>£13 · 340&nbsp;g</strong></p>
+      </article>
+      <article class="season" data-season="3">
+        <p class="season__month"><span class="mask"><span>October</span></span></p>
+        <h3 class="season__name">Ivy — not for sale</h3>
+        <p class="season__notes">The last flow of the year. Dark, strong, sets like toffee in the comb. We leave every drop of it in the hives for the bees to winter on.</p>
+        <p class="season__meta"><span>Pfund 130&nbsp;mm · Dark amber</span><strong>Stays with the bees</strong></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Pfund gauge: persistent instrument -->
+  <div class="gauge" aria-hidden="true">
+    <span class="gauge__label">Colour, Pfund scale</span>
+    <div class="gauge__bar"><i class="gauge__needle"></i></div>
+    <span class="gauge__read"><b class="gauge__mm">20</b> mm · <em class="gauge__name">White</em></span>
+  </div>
+
+  <!-- HARVEST + JARS -->
+  <section class="harvest" id="jars" aria-labelledby="jars-title">
+    <div class="harvest__stage">
+      <p class="harvest__title" aria-hidden="true"><span class="mask"><span>Harvest.</span></span></p>
+      <p class="harvest__sub" aria-hidden="true"><span class="mask"><span>We lift the frames in September.</span></span><span class="mask"><span>One hillside, one year, three jars.</span></span></p>
+
+      <h2 id="jars-title" class="harvest__h">This year’s jars</h2>
+      <ul class="jars">
+        <li class="jar" data-item="blossom">
+          <svg class="jar__svg" viewBox="0 0 120 160" aria-hidden="true">
+            <defs><clipPath id="jc0"><path d="M26 40h68q12 0 13 14l3 80q1 20-20 20H30q-21 0-20-20l3-80q1-14 13-14z"/></clipPath></defs>
+            <g clip-path="url(#jc0)"><rect class="jar__fill" x="0" y="36" width="120" height="124" fill="#F1D88C"/><rect class="jar__shine" x="22" y="50" width="8" height="90" rx="4"/></g>
+            <path class="jar__glass" d="M26 40h68q12 0 13 14l3 80q1 20-20 20H30q-21 0-20-20l3-80q1-14 13-14z"/>
+            <rect class="jar__lid" x="28" y="18" width="64" height="20" rx="4"/>
+            <g class="jar__label"><rect x="30" y="78" width="60" height="40" rx="3"/><text x="60" y="96">Blossom</text><text x="60" y="108" class="sm">Holloway</text></g>
+          </svg>
+          <h3>Spring Blossom</h3>
+          <p>Set &amp; creamy · pale · gentle</p>
+          <p class="jar__price">£8 <small>340 g</small></p>
+          <button class="btn add" type="button" data-cursor="Add">Add a jar</button>
+        </li>
+        <li class="jar" data-item="bramble">
+          <svg class="jar__svg" viewBox="0 0 120 160" aria-hidden="true">
+            <defs><clipPath id="jc1"><path d="M26 40h68q12 0 13 14l3 80q1 20-20 20H30q-21 0-20-20l3-80q1-14 13-14z"/></clipPath></defs>
+            <g clip-path="url(#jc1)"><rect class="jar__fill" x="0" y="36" width="120" height="124" fill="#E3A63A"/><rect class="jar__shine" x="22" y="50" width="8" height="90" rx="4"/></g>
+            <path class="jar__glass" d="M26 40h68q12 0 13 14l3 80q1 20-20 20H30q-21 0-20-20l3-80q1-14 13-14z"/>
+            <rect class="jar__lid" x="28" y="18" width="64" height="20" rx="4"/>
+            <g class="jar__label"><rect x="30" y="78" width="60" height="40" rx="3"/><text x="60" y="96">Bramble</text><text x="60" y="108" class="sm">Holloway</text></g>
+          </svg>
+          <h3>Bramble &amp; Clover</h3>
+          <p>Runny · golden · floral</p>
+          <p class="jar__price">£9 <small>340 g</small></p>
+          <button class="btn add" type="button" data-cursor="Add">Add a jar</button>
+        </li>
+        <li class="jar" data-item="heather">
+          <svg class="jar__svg" viewBox="0 0 120 160" aria-hidden="true">
+            <defs><clipPath id="jc2"><path d="M26 40h68q12 0 13 14l3 80q1 20-20 20H30q-21 0-20-20l3-80q1-14 13-14z"/></clipPath></defs>
+            <g clip-path="url(#jc2)"><rect class="jar__fill" x="0" y="36" width="120" height="124" fill="#B4661C"/><rect class="jar__shine" x="22" y="50" width="8" height="90" rx="4"/></g>
+            <path class="jar__glass" d="M26 40h68q12 0 13 14l3 80q1 20-20 20H30q-21 0-20-20l3-80q1-14 13-14z"/>
+            <rect class="jar__lid" x="28" y="18" width="64" height="20" rx="4"/>
+            <g class="jar__label"><rect x="30" y="78" width="60" height="40" rx="3"/><text x="60" y="96">Heather</text><text x="60" y="108" class="sm">Holloway</text></g>
+          </svg>
+          <h3>Late Heather</h3>
+          <p>Thick as jelly · smoky · bold</p>
+          <p class="jar__price">£13 <small>340 g</small></p>
+          <button class="btn add" type="button" data-cursor="Add">Add a jar</button>
+        </li>
+      </ul>
+      <p class="jars__also">Also at the stand: cut comb £15 · beeswax candles from £6 · Ivy’s “emergency” honey sweets £2</p>
+    </div>
+  </section>
+
+  <!-- forage marquee -->
+  <div class="forage" aria-label="What our bees forage on">
+    <div class="forage__track">
+      <span>hawthorn · apple · dandelion · bramble · white clover · lime · rosebay · borage · heather · ivy · </span>
+      <span aria-hidden="true">hawthorn · apple · dandelion · bramble · white clover · lime · rosebay · borage · heather · ivy · </span>
+    </div>
+  </div>
+
+  <!-- RELEASE -->
+  <section class="promise" aria-labelledby="promise-title">
+    <h2 id="promise-title" class="promise__big reveal">We take only what the bees can spare.</h2>
+    <p class="promise__body">Every October the ivy honey stays in the hives. No sugar syrup, no heating, no blending with anyone else’s honey. If a colony has a bad summer, it gets the year off.</p>
+  </section>
+
+  <section class="family" aria-labelledby="family-title">
+    <h2 id="family-title" class="family__title reveal">Four Holloways and roughly two million bees.</h2>
+    <ul class="people">
+      <li><span class="people__name">Ruth</span><p>Keeps the hives. Has been stung 1,400-odd times and insists on counting.</p></li>
+      <li><span class="people__name">Dev</span><p>Builds the frames, drives the van, and runs the extractor at 5&nbsp;a.m. so the kitchen smells of wax by breakfast.</p></li>
+      <li><span class="people__name">Ivy, 11</span><p>Names every queen. This year’s include Marigold, Duchess and Big Sandra.</p></li>
+      <li><span class="people__name">Len, 84</span><p>Started it all with two hives in 1987. Still checks the jars at the stand every morning.</p></li>
+    </ul>
+  </section>
+
+  <section class="visit" id="visit" aria-labelledby="visit-title">
+    <div class="visit__text">
+      <h2 id="visit-title" class="visit__title reveal">The honesty stand</h2>
+      <p>At our gate on Holloway Lane, every day from first light till dark. Jars on the shelf, tin on the post, card reader if you’ve no cash.</p>
+      <p><strong>Open hive days</strong> — first Saturday of the month, May to September. Veils provided. Biscuits not guaranteed.</p>
+      <address>Holloway Farm, Holloway Lane<br>Much Dewchurch, Herefordshire HR2 0XX</address>
+      <a class="btn btn--line" href="https://www.openstreetmap.org/search?query=Much%20Dewchurch" data-cursor="Map">Open the map</a>
+    </div>
+    <svg class="lane" viewBox="0 0 600 520" role="img" aria-label="Sketch map: Holloway Lane winds up past the stand to the orchard, the bottom field and the hives">
+      <path class="lane__edge" d="M40 500 C140 430 120 330 230 300 S380 300 400 200 S470 60 560 30"/>
+      <path class="lane__road" d="M40 500 C140 430 120 330 230 300 S380 300 400 200 S470 60 560 30"/>
+      <g class="pin" transform="translate(150 405)"><circle r="9"/><text x="20" y="6">The stand</text></g><g class="pin" transform="translate(300 292)"><circle r="7"/><text x="18" y="6">Orchard · blossom</text></g><g class="pin" transform="translate(410 175)"><circle r="7"/><text class="end" x="-18" y="6">Bottom field · clover</text></g><g class="pin" transform="translate(520 58)"><circle r="7"/><text class="end" x="-18" y="6">41 hives</text></g></svg>
+  </section>
+
+  <!-- CLOSE -->
+  <section class="close" id="order" aria-labelledby="order-title">
+    <div class="order">
+      <h2 id="order-title" class="order__title">Your basket</h2>
+      <ul class="order__list"><li class="order__empty">Nothing yet — the jars are <a href="#jars">up there</a>.</li></ul>
+      <p class="order__total">Total <b>£0</b></p>
+      <p class="order__note">We post anywhere in the UK (£4.50, free over £30) or leave it set aside at the stand with your name on.</p>
+      <a class="btn btn--honey order__send" href="mailto:hello@hollowayhoney.example?subject=Honey%20order" data-cursor="Send">Send my order</a>
+    </div>
+    <p class="close__word" aria-hidden="true"><span>Holloway</span><i class="drip" style="--x:6%;--d:0s;--h:1"></i><i class="drip" style="--x:23%;--d:1.3s;--h:.7"></i><i class="drip" style="--x:41%;--d:.6s;--h:1.2"></i><i class="drip" style="--x:58%;--d:2.1s;--h:.8"></i><i class="drip" style="--x:79%;--d:.9s;--h:1"></i><i class="drip" style="--x:93%;--d:1.8s;--h:.6"></i></p>
+    <footer class="foot">
+      <p>Holloway Honey Farm · Holloway Lane, Herefordshire</p>
+      <p><a href="mailto:hello@hollowayhoney.example">hello@hollowayhoney.example</a> · <a href="https://instagram.com/" rel="noopener">Instagram</a></p>
+      <p class="foot__toy">Tap anywhere down here to drop some honey.</p>
+      <p>© 2026 the Holloways</p>
+    </footer>
+    <svg width="0" height="0" aria-hidden="true" focusable="false"><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="7"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10"/></filter><filter id="goo-sm"><feGaussianBlur in="SourceGraphic" stdDeviation="2.5"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"/></filter></svg>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script src="motion-kit.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

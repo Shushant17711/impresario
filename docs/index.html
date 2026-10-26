@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Impresario: one sentence in, an Awwwards-style website out</title>
+<meta name="description" content="A Claude Code skill that makes coding agents invent a subject-specific concept and ship heavily animated, award-style websites without asking for style or assets.">
+<meta property="og:title" content="Impresario: one sentence in, an Awwwards-style website out">
+<meta property="og:description" content="Prompt: “make a website for a small family honey farm.” No assets, no style direction. This is what the agent built.">
+<meta property="og:image" content="https://shushant17711.github.io/impresario/media/holloway-poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath fill=%22%23E8A02C%22 d=%22M12 2l8.66 5v10L12 22l-8.66-5V7z%22/%3E%3C/svg%3E">
+<style>
+:root{--bg:#14100a;--ink:#f3e7cf;--mute:#a8987a;--honey:#e8a02c}
+*{box-sizing:border-box}html{background:var(--bg);color:var(--ink);font:400 18px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace}
+body{margin:0}a{color:var(--honey)}main{max-width:1080px;margin:0 auto;padding:7vh 24px 10vh}
+.k{color:var(--honey);letter-spacing:.2em;font-size:13px;text-transform:uppercase}
+h1{font:700 clamp(40px,7vw,88px)/1 ui-monospace,monospace;margin:.4em 0 .3em;letter-spacing:-.02em}
+h1 em{font-style:normal;color:var(--honey)}
+.lead{color:var(--mute);max-width:60ch}
+.prompt{margin:48px 0 20px;padding:20px 24px;border:1px solid #3a2f1f;border-radius:10px;font-size:clamp(18px,2.4vw,26px)}
+.prompt span{color:var(--mute);font-size:14px;display:block;margin-bottom:6px}
+video{width:100%;border-radius:12px;display:block;box-shadow:0 30px 80px -30px #000;background:#000}
+.row{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 64px}
+.btn{display:inline-block;padding:14px 22px;border-radius:999px;background:var(--honey);color:#1b1206;text-decoration:none;font-weight:700}
+.btn.o{background:none;color:var(--ink);border:1px solid #4a3d29}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin:24px 0 64px}
+.card{border:1px solid #3a2f1f;border-radius:12px;padding:22px}.card b{color:var(--honey)}
+pre{background:#0d0a06;border:1px solid #3a2f1f;border-radius:10px;padding:18px;overflow:auto;font-size:15px}
+h2{font-size:24px;margin-top:56px}
+</style>
+</head>
+<body>
+<main>
+  <div class="k">Impresario · a Claude Code skill</div>
+  <h1>One sentence in.<br><em>This</em> out.</h1>
+  <p class="lead">A skill that turns a coding agent into a creative director. It gets a subject and nothing else: no assets, no style, no follow-up questions. It invents a concept that belongs to that subject, builds it with choreographed motion and screenshots its own work before handing it over.</p>
+
+  <div class="prompt"><span>&gt; the entire prompt</span>make a website for a small family honey farm</div>
+  <video src="media/holloway-demo.mp4" poster="media/holloway-poster.jpg" controls autoplay muted loop playsinline></video>
+  <div class="row">
+    <a class="btn" href="holloway/">Open the live site →</a>
+    <a class="btn o" href="https://github.com/Shushant17711/impresario">Get the skill on GitHub</a>
+    <a class="btn o" href="veda/">Second test: Veda Computers</a>
+  </div>
+
+  <h2>What the agent decided on its own</h2>
+  <p class="lead">“The site where you scroll through a beekeeping year and watch the honey rise and darken, then pour into the three jars you can buy.”</p>
+  <div class="grid">
+    <div class="card"><b>Opening</b><br>A drop falls, splashes into a pool, and “Holloway” rises out of the honey.</div>
+    <div class="card"><b>The year</b><br>A live WebGL liquid fills the viewport and darkens from April to October. A Pfund gauge (the real honey-grading scale) tracks it.</div>
+    <div class="card"><b>Harvest</b><br>Honey floods the screen, then drains into three jars. The jars are the shop.</div>
+    <div class="card"><b>Close</b><br>A dripping wordmark. Click it and more honey drops into the pool.</div>
+  </div>
+
+  <h2>Install</h2>
+  <pre>git clone https://github.com/Shushant17711/impresario ~/.claude/skills/impresario</pre>
+  <p class="lead">Then ask for any website. Node 18+ and a local Chrome enable the self-review screenshots. MIT licensed.</p>
+</main>
+</body>
+</html>

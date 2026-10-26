@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shinobi — incomplete mechanics prototype</title>
+<style>
+  :root {
+    --ground: #0e0f0c;
+    --paper: #f2efe6;
+    --ash: #6e7a5e;
+    --ember: #c8452a;
+    --space-2: 8px;
+    --space-4: 16px;
+    --space-8: 32px;
+    --space-16: 64px;
+    --space-24: 96px;
+    --space-40: 160px;
+    --ease: cubic-bezier(.16, 1, .3, 1);
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--paper);
+    font-family: Georgia, serif;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+  h1, h2 { font-weight: 400; letter-spacing: -0.02em; }
+  .skip { position: absolute; left: 16px; top: -100%; color: var(--paper); background: var(--ground); min-height: 44px; padding: 8px 12px; display: inline-flex; align-items: center; }
+  .skip:focus { top: 16px; }
+  .scene {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: var(--space-8) var(--space-4);
+  }
+  .scene__inner {
+    width: min(640px, 100%);
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .scene__title {
+    font-size: clamp(48px, 8vw, 96px);
+    line-height: 1.05;
+    margin: 0 0 var(--space-4);
+  }
+  .scene__body {
+    font-size: 17px;
+    max-width: 44ch;
+    color: #8a9578;
+  }
+  .scene__figure {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+  }
+  .scene__shape {
+    width: 42vw;
+    aspect-ratio: 3 / 4;
+    background: var(--ash);
+    opacity: 0.18;
+    transform: translateY(0);
+  }
+  .scene__mask {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--ember);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .scene--end { background: var(--paper); color: var(--ground); }
+  .scene--end .scene__body { color: #4a5240; }
+  footer {
+    padding: var(--space-16) var(--space-4);
+    text-align: center;
+    color: var(--ash);
+  }
+  :focus-visible { outline: 2px solid var(--ember); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+<!-- This is intentionally retained as a mechanics-only negative example. It is not accepted cinematic work. -->
+<a class="skip" href="#main">Skip to content</a>
+<main id="main">
+  <section class="scene" data-scene="approach">
+    <div class="scene__figure" aria-hidden="true"><div class="scene__shape"></div></div>
+    <div class="scene__inner">
+      <h1 class="scene__title">Shinobi</h1>
+      <p class="scene__body">Incomplete mechanics prototype: rectangles and a line test pinning. No character, sword draw or cinematic scene is implemented.</p>
+      <div class="scene__mask"></div>
+    </div>
+  </section>
+  <section class="scene" data-scene="stance">
+    <div class="scene__figure" aria-hidden="true"><div class="scene__shape"></div></div>
+    <div class="scene__inner">
+      <h2 class="scene__title">Stance</h2>
+      <p class="scene__body">Weight on the back foot. Hands low. The body is the blade.</p>
+      <div class="scene__mask"></div>
+    </div>
+  </section>
+  <section class="scene" data-scene="cut">
+    <div class="scene__figure" aria-hidden="true"><div class="scene__shape"></div></div>
+    <div class="scene__inner">
+      <h2 class="scene__title">Cut</h2>
+      <p class="scene__body">One motion. No wind-up. The arm is already there.</p>
+      <div class="scene__mask"></div>
+    </div>
+  </section>
+  <section class="scene scene--end" data-scene="aftermath">
+    <div class="scene__figure" aria-hidden="true"><div class="scene__shape"></div></div>
+    <div class="scene__inner">
+      <h2 class="scene__title">After</h2>
+      <p class="scene__body">Empty ground. The camera does not cut.</p>
+      <div class="scene__mask"></div>
+    </div>
+  </section>
+</main>
+<footer>Mechanics-only prototype. Creative acceptance: not evaluated; original narrative not delivered.</footer>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    if (!reduced) {
+      document.querySelectorAll('.scene').forEach((scene) => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: scene,
+            start: 'top top',
+            end: '+=120%',
+            scrub: 0.6,
+            pin: true,
+            invalidateOnRefresh: true,
+          },
+        });
+        tl.to(scene.querySelector('.scene__shape'), { yPercent: -8, ease: 'none' }, 0)
+          .to(scene.querySelector('.scene__mask'), { scaleX: 1, ease: 'none' }, 0.2);
+      });
+      if (window.Lenis) {
+        const lenis = new Lenis({ duration: 1.1 });
+        gsap.ticker.add((time) => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+        lenis.on('scroll', ScrollTrigger.update);
+      }
+    }
+  }
+</script>
+</body>
+</html>

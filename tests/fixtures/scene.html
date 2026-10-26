@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Capture mechanics fixture — not cinematic proof</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#fafafa;font:18px system-ui}header{height:500px;padding:30px}section{height:2200px}.stage{position:sticky;top:0;height:900px;padding:40px;background:#103447;color:#fff}button{padding:16px;margin:8px;font:inherit}#subject{width:200px;height:180px;background:#dc6348;padding:24px;margin:30px;transition:transform .1s}#subject[data-state="inspect"]{transform:translateX(160px) rotate(45deg);background:#1d9974}#subject[data-state="choose"]{transform:translateY(120px);background:#d7b84d;color:#111}:focus-visible{outline:3px solid #fa9}footer{height:600px;padding:40px}@media(max-width:600px){.stage{height:844px;padding:16px}#subject[data-state="inspect"]{transform:translateX(60px) rotate(45deg)}}@media(prefers-reduced-motion:reduce){#subject{transition:none;transform:none!important;background:#d7b84d;color:#111}}
+</style>
+<header><h1>Capture mechanics fixture</h1><p>Boxes test evidence tooling. They are not accepted creative assets.</p></header>
+<section><div class="stage" id="machine" data-scene="machine"><h2>Machine inspection</h2><button id="inspect">Inspect</button><button id="choose">Choose</button><div id="subject" data-state="closed">Closed machine</div><p id="specs">Inspect compatible components, then choose a configuration.</p></div></section><footer>Release and ordinary content</footer>
+<script>
+const subject=document.getElementById('subject'),phone=matchMedia('(max-width:600px)'),reduce=matchMedia('(prefers-reduced-motion:reduce)');
+function pose(state){subject.dataset.state=state;subject.textContent=state==='inspect'?'Exploded components':state==='choose'?'Chosen configuration':'Closed machine';}
+document.getElementById('inspect').addEventListener('click',()=>pose('inspect'));
+document.getElementById('choose').addEventListener('click',()=>pose('choose'));
+if(reduce.matches){pose('choose');document.getElementById('specs').textContent='All compatible components and chosen configuration available without motion.';}
+else if(!phone.matches){addEventListener('scroll',()=>{const p=(scrollY-500)/900;pose(p<.3?'closed':p<.8?'inspect':'choose');});}
+</script></html>
