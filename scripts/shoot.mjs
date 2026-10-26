@@ -79,6 +79,10 @@ for (const vp of viewports) {
   await setReducedMotion(cdp, sessionId, !!vp.r);
   await goto(cdp, sessionId, url, { settle: 600 });
   await sleep(vp.r ? 800 : 3000); // real-time wait: let the opening ritual play
+  // Interaction-led concepts: the page may expose window.__impresarioDemo (async fn)
+  // that simulates the visitor's signature interaction, so captures show it working.
+  const demo = await evaluate(cdp, sessionId, `(async () => { if (typeof window.__impresarioDemo !== 'function') return false; await window.__impresarioDemo(); return true; })()`).catch(() => false);
+  if (demo) { console.log(`[${vp.name}] ran window.__impresarioDemo()`); await sleep(800); }
   const plan = await evaluate(cdp, sessionId, PLAN);
   const frames = [];
   let i = 0;

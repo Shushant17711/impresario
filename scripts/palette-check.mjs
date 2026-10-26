@@ -73,6 +73,21 @@ export function analyse(colours) {
   return { s, hueList, ground, top: px.slice(0, 12), flags };
 }
 
+// ---- ground churn: how often the page's dominant background changes frame to frame
+export function oklabDist(a, b) {
+  const ab = (o) => [o.L, o.C * Math.cos((o.H * Math.PI) / 180), o.C * Math.sin((o.H * Math.PI) / 180)];
+  const [x, y] = [ab(a), ab(b)];
+  return Math.hypot(x[0] - y[0], x[1] - y[1], x[2] - y[2]);
+}
+export function groundChanges(grounds, threshold = 0.12) {
+  const changes = [];
+  for (let i = 1; i < grounds.length; i++)
+    if (oklabDist(grounds[i - 1].o, grounds[i].o) > threshold) changes.push(i);
+  const distinct = [];
+  for (const g of grounds) if (!distinct.some((d) => oklabDist(d.o, g.o) <= threshold)) distinct.push(g);
+  return { changes, distinct };
+}
+
 // ---- main
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === path.resolve(new URL(import.meta.url).pathname);
 if (isMain) {
@@ -89,6 +104,19 @@ if (isMain) {
   }
   const colours = [...merged.values()].sort((a, b) => b.count - a.count);
   const r = analyse(colours);
+  // dominant ground per desktop frame, in scroll order
+  const desk = files.filter((f) => f.includes('-desktop-')).sort();
+  const grounds = desk.map((f) => {
+    const { colours: c } = colourHistogram(fs.readFileSync(path.join(dir, f)), { quantize: 16, step: 6 });
+    return { f, hex: c[0].hex, o: oklch(c[0].rgb), share: c[0].share };
+  });
+  const gc = groundChanges(grounds);
+  console.log(`ground sequence (desktop): ${grounds.map((g) => g.hex).join(' → ')}`);
+  console.log(`ground changes: ${gc.changes.length} · distinct grounds: ${gc.distinct.length}`);
+  if (gc.changes.length >= 3 && gc.changes.length <= 4 && gc.distinct.length <= 3)
+    console.log('WARN ground changes 3–4: fine only if they are ≤2 named, scrubbed events (e.g. a flood that drains back). Reviewer must confirm.');
+  if (gc.changes.length > 4 || gc.distinct.length > 3)
+    r.flags.push(`ground-churn: the page background changes ${gc.changes.length}× across ${gc.distinct.length} grounds. That's a slideshow, not a world. Keep one home ground for ≥70% of the scroll, with ≤2 named, scrubbed ground events (colour.md §3c).`);
   const pct = (x) => (x * 100).toFixed(1) + '%';
   console.log(`palette-check: ${files.length} frames from ${dir}`);
   console.log('rendered colours by share (hex  share  L C H):');
@@ -97,7 +125,7 @@ if (isMain) {
     r.hueList.slice(0, 4).map((h) => `${h.h}-${h.h + 30}°=${pct(h.share)}`).join(', '));
   const directionFile = path.join(path.dirname(path.resolve(dir)), 'direction.md');
   const exception = fs.existsSync(directionFile) && /PALETTE EXCEPTION:\s*\S.{20,}/i.test(fs.readFileSync(directionFile, 'utf8'));
-  if (!r.flags.length) { console.log('PASS: no generated-default palette family detected (this is not a taste verdict).'); process.exit(0); }
+  if (!r.flags.length) { console.log('PASS: no default palette family, rainbow or ground churn detected (this is not a taste verdict).'); process.exit(0); }
   for (const f of r.flags) console.log('FLAG ' + f);
   if (exception) {
     console.log('direction.md has a PALETTE EXCEPTION. The reviewer must judge whether that reason is truly subject-specific.');

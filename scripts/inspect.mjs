@@ -115,6 +115,14 @@ async function main() {
       await setViewport(cdp, sessionId, width, height, width <= 480, 1);
       await setReducedMotion(cdp, sessionId, false);
       await goto(cdp, sessionId, url, { settle: 800 });
+      // Measure settled layouts, not pre-reveal start states: walk the page so every
+      // ScrollTrigger fires, finish one-shot reveal tweens, then return to the top.
+      await evaluate(cdp, sessionId, `(async () => {
+        const H = document.documentElement.scrollHeight;
+        for (let y = 0; y <= H; y += innerHeight * 0.8) { scrollTo(0, y); await new Promise((r) => setTimeout(r, 60)); }
+        if (window.gsap) gsap.globalTimeline.getChildren(true, true, false)
+          .forEach((t) => { if (!(t.scrollTrigger && t.scrollTrigger.vars.scrub)) t.progress(1); });
+        scrollTo(0, 0); await new Promise((r) => setTimeout(r, 300)); return true; })()`);
 
       const m = await evaluate(cdp, sessionId, MEASURE_EXPRESSION);
 

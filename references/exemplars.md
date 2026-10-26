@@ -64,9 +64,9 @@ Every site below does most of these. Generic AI sites do almost none.
   a turntable scrubs sections. Always keep a plain DOM nav as escape.
 
 ### Dogstudio (dogstudio.co, the 3D dog era)
-- **Experience:** a 3D dog's head watches your cursor; background colour changes per
-  section while the dog stays.
-- **Move:** one *persistent character* across the whole page + section-wise palette shifts.
+- **Experience:** a 3D dog's head watches your cursor and stays with you down the page.
+- **Move:** one *persistent character* across the whole page; the world around it changes
+  in light and staging. (Don't copy any per-section repainting; see `colour.md` §3c.)
 - **Why:** a mascot with gaze creates instant connection; continuity across sections.
 - **Translation:** a persistent hero object that every section re-lights or re-poses
   (a pen nib for a writing app, a planet for an edtech site). Code-only: procedural
@@ -137,7 +137,8 @@ Every site below does most of these. Generic AI sites do almost none.
 - **Move:** *rhythm and bold flat colour* — motion graphics, not 3D.
 - **Why:** proves heavy animation does not need WebGL.
 - **Translation:** stats/personal-data pages: numbers count up, shapes morph (SVG
-  path or clip-path), each step a colour shift.
+  path or clip-path). Full-screen colour per step works for *short* story-format
+  cards that you tap through, not for a scrolling website (see `colour.md` §3c).
 
 ## Deconstruction template (use when browsing a new reference)
 

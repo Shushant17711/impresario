@@ -27,8 +27,8 @@ npm packages (`gsap`, `@gsap/react` `useGSAP`, `lenis`, `three`/`@react-three/fi
    with `scrub` so the visitor *drives* the motion. Use one-shot triggers only for
    small supporting reveals.
 3. **Hand-offs.** The last state of section N is the first state of section N+1:
-   the hero object shrinks into the next section's layout (Flip), the background
-   colour of the next section is already bleeding in, a line drawn at the end
+   the hero object shrinks into the next section's layout (Flip), light on the
+   persistent element dims or warms, a line drawn at the end
    becomes the next section's divider. Overlap timelines (`"<0.2"`, `"-=0.4"`).
 4. **One persistent thing.** Something stays across the page (an object, a shader
    background, a cursor, a counter) and *changes state* per section.
@@ -82,9 +82,15 @@ scene.to('.obj', { rotate: 180, scale: 0.6, xPercent: -30 })
      .from('.scene__step--1', { yPercent: 100, autoAlpha: 0 }, '<0.2')
      .to('.scene__step--1', { yPercent: -100, autoAlpha: 0 })
      .from('.scene__step--2', { yPercent: 100, autoAlpha: 0 }, '<')
-     .to('.scene', { '--bg': 'var(--next-bg)' }, '<');   // colour hand-off
+     .to('.obj', { '--glow': 1 }, '<');   // light changes on the object, not the page ground
 ```
 Length of pin = amount of story. 200–400 % for a hero journey.
+
+**Trigger order matters.** Pins add scroll distance, so any ScrollTrigger created
+*before* a pin that sits above it computes its start/end without that spacing and
+fires late (section colours or states arriving one section behind). Create triggers
+in page order (top to bottom), or give earlier-created ones `refreshPriority`, then
+call `ScrollTrigger.sort(); ScrollTrigger.refresh()` after everything is built.
 
 ### §4 Scroll-scrubbed object (3D or layered SVG "exploded view")
 Drive any state from progress: `onUpdate: self => world.setProgress(self.progress)`,
@@ -110,7 +116,8 @@ void main(){ vec2 uv=gl_FragCoord.xy/uRes; vec2 p=uv*3.;
 brightest below ~0.92 per channel; additive highlights over a pale colour clip toward
 lemon/green. Check the palest state in a screenshot, not in your head.
 
-Shift `uA/uB/uC` per section with `gsap.to(uniforms.uA.value, {...})` for colour hand-offs.
+Drift `uA/uB/uC` slowly across the *whole* scroll (or at one ground event) with
+`gsap.to(uniforms.uA.value, {...})`. Don't re-tint per section.
 
 ### §6 Custom cursor + magnetic buttons
 `motionKit.cursor()` gives a lerped dot/ring; add `data-cursor="View"` to grow it into
@@ -168,10 +175,15 @@ Same-document: `document.startViewTransition(() => swap())` with
 with clip-path wipes in the world's material. Multi-page: CSS
 `@view-transition { navigation: auto; }`.
 
-### §14 Section theme shifts
-Each section declares `data-theme="<subject state>"` (e.g. `dawn|noon|sodium`, `cracked|rewired|booted`; never a generic `dark|cream|accent` set); a ScrollTrigger per section
-tweens CSS variables on `<html>` when its centre crosses the viewport centre. The
-persistent background (shader or solid) changes smoothly instead of hard cuts.
+### §14 Ground events (rare; not a per-section theme)
+At most 1–2 per page (`colour.md` §3c). Scrub the change over a long range so the
+visitor *watches* it happen. Never use a per-section `data-theme` swap:
+```js
+gsap.timeline({ scrollTrigger: { trigger: '.event', start: 'top 80%', end: '+=120%', scrub: true } })
+  .to(':root', { '--ground': 'var(--event-ground)', '--ink': 'var(--event-ink)', ease: 'none' });
+// better still: animate the material (flood a clip-path / shader uniform) so colour spreads physically
+```
+For everything else, keep the ground and change light, scale or density inside it.
 
 ### §15 Three.js hero, procedural (no model files)
 `LatheGeometry` (cups, vases, bottles from a 2D profile), `ExtrudeGeometry` from SVG

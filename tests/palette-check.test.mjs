@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { analyse } from '../scripts/palette-check.mjs';
+import { analyse, groundChanges, oklch } from '../scripts/palette-check.mjs';
 const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
 const pal = (pairs) => pairs.map(([h, n]) => ({ hex: h, rgb: hex(h), count: n }));
 
@@ -24,4 +24,14 @@ test('tab10 rainbow is flagged', () => {
 test('tonal blue world passes', () => {
   const r = analyse(pal([['#0B2A4A', 50], ['#1F5F8B', 25], ['#9FD3E6', 20], ['#E6F4F8', 5]]));
   assert.deepEqual(r.flags, []);
+});
+
+test('per-section repaint is counted as churn; one stable ground is not', () => {
+  const g = (h) => ({ o: oklch(hex(h)) });
+  const slideshow = ['#1d6ea7', '#ff7f0e', '#2da42d', '#c92526', '#824eb2'].map(g);
+  assert.ok(groundChanges(slideshow).changes.length >= 4);
+  const world = ['#2a1f10', '#2a1f10', '#2c2112', '#2a1f10', '#dcb35a', '#dcb35a'].map(g);
+  const r = groundChanges(world);
+  assert.equal(r.changes.length, 1);
+  assert.equal(r.distinct.length, 2);
 });

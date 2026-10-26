@@ -55,8 +55,8 @@ Follow `references/idea-engine.md`: mine the subject (verb, material, dimension,
 signature object, ritual, medium) → generate **5 concepts with 5 different
 generators** → score → pick the boldest buildable → make it twice as bold once →
 pass the anti-generic gate. Then do palette and type with `references/colour.md`
-(sample 8 subject colours → pick a structure → harmonise: ≤ 3 full-bleed grounds, one
-governing hue → swap test; type must look chosen, not like a fallback). Write the director's sheet
+(sample 8 subject colours → pick a structure → harmonise: one home ground for ≥ 70% of the scroll, ≤ 2 named
+ground *events*, never a repaint per section, one governing hue → swap test; type must look chosen, not like a fallback). Write the director's sheet
 to `.impresario/direction.md` (keep it short). Don't show the user a menu of concepts; choose.
 
 ### 4. Choreograph the journey
@@ -94,7 +94,7 @@ in `references/signature-moves.md`.
   `signature-moves.md`; in React/Next/Vite use the npm equivalents.
 - Build the **signature move first**, in full fidelity, then the sections around it.
 - Craft layer is a menu, not a checklist: masked type reveals, cursor, magnetic CTAs,
-  velocity marquee/skew, clip-path reveals, theme shifts, grain. Pick **at most three**
+  velocity marquee/skew, clip-path reveals, one ground event, grain. Pick **at most three**
   that the subject's material explains. These are *not* defaults: a labelled custom
   cursor, a grain overlay, a preloader counter, a light→dark "climax" flip, a giant
   wordmark footer. Every earlier run used all five, and that's why the sites look like siblings.
@@ -158,8 +158,15 @@ eating thin type on phone), fixed nav readable over every section, nothing hidde
 under the nav, offer/prices reachable in the first third of the page or from the nav,
 favicon + title + meta description, no horizontal scroll at 390 px, focus visible.
 
-Fix the lowest-scoring issue, re-capture with a new tag (`r2`, `r3`), repeat until
-the weighted score is ≥ 8 or three rounds pass.
+Fix the lowest-scoring issue, re-capture with a new tag (`r2`, `r3`) and re-review.
+Do at most **three design rounds**, plus one confirmation capture after the last
+review's fixes. If the score is still under 8, ship it and report the score honestly
+with the reviewer's ranked next fixes. Never inflate the score to finish.
+
+If the signature move is an interaction (click, drag, type), define
+`window.__impresarioDemo = async () => { … }` to simulate it (flip a few faults, drag
+the slider). `shoot.mjs` runs it before capturing so the reviewer sees it working.
+Keep it side-effect free for real visitors; it only runs when called.
 
 ### 7. Handoff
 Tell the user, briefly: the one-sentence concept, the journey beats, the signature

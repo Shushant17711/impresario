@@ -56,7 +56,7 @@ Choose the one the subject implies and write one line on why:
 | **Saturated ground** | The page *is* the subject's colour; text is a deep shade of the same hue | food, materials, brands with a colour |
 | **Tonal world** | One non-neutral hue over 6–9 lightness steps; colour comes from light and depth | sea, night, lab, forest, cold metal |
 | **Two-ink print** | Two strong inks overprinting (riso, screenprint, blueprint, cyanotype) | makers, music, posters, research |
-| **Chapter light** | Each section is a different lit state of one place (dawn → noon → sodium night) | journeys, time, process |
+| **Chapter light** | One place whose light drifts *gradually* across the whole scroll (dawn → noon → dusk as one continuous gradient, never a repaint per section) | journeys, time, process |
 | **Full-colour illustration** | Authored scene with 5–7 hues in balance | stories, kids, games, food |
 | **Lit dark** | Darkness with light from the subject's own source (screen glow, embers, stage light), which is never one neon accent | night, cinema, space, hardware |
 | **Neutral + accent** | Only with a PALETTE EXCEPTION | rare |
@@ -64,8 +64,8 @@ Choose the one the subject implies and write one line on why:
 ### 3. Build it in OKLCH
 - Make every surface come from the step-1 hues. Tint the "black" toward the subject's
   hue (deep PCB green `oklch(0.22 0.05 165)`, not `#111`) and do the same for the light tone.
-- Give it at least **two palette states** along the journey (the colour changes as the
-  world does). One flat theme flip from light to dark isn't enough on its own.
+- Let colour *live* inside the world (light on the object, the shader's tint, the data
+  marks) rather than repainting the page background. See §3c.
 - Keep contrast non-negotiable: body text 4.5:1, large text 3:1. On a saturated ground,
   use a deep or pale shade of the same hue before you reach for black or white.
 
@@ -75,7 +75,7 @@ on the shelf) instead of a *palette*. The v2 portfolio painted ten full-screen c
 in matplotlib's tab10 (blue, orange, green, red, purple, brown, pink, grey, olive,
 cyan). Every colour was "real", and the result read as a rainbow: reviewer 6.7/10.
 
-- **At most 3 full-bleed grounds per page**, plus tints and shades of them. Other
+- **At most 2 full-bleed grounds per page** (home + one event ground), plus tints and shades of them. Other
   sampled colours go into small marks: data, links, a single object, a highlight.
 - **One governing hue family carries ≥ 60% of the chromatic area.** Everything else
   is a deliberate relationship to it: analogous, a single complement, or the same
@@ -88,6 +88,33 @@ cyan). Every colour was "real", and the result read as a rainbow: reviewer 6.7/1
 - **Squint test** on the desktop contact sheet: blur your eyes. You should be able to
   name the page's colour world in two words ("deep teal and brass"). If you need a
   list, cut it down.
+
+### 3c. Ground stability: don't repaint the page every scroll
+The newest failure: models now change the **entire background colour at every
+section** (blue chapter → orange chapter → green chapter, or dark → gold → copper →
+dark → gold). It reads like a slide deck, it's tiring, and it breaks the illusion
+of one place. Award sites hold one world and let things *happen in it*.
+
+- **One home ground carries ≥ 70% of the scroll.** Pick it in the director's sheet.
+- **Full-bleed ground changes: 0–2 per page**, and each one is a *story event* you
+  can name ("the screen boots", "night falls", "honey floods the jar"). It's never
+  "next project", "next service" or "variety". Mark them in the beat sheet as
+  `GROUND EVENT: <why>`.
+- **Changes are continuous, never cuts.** A scrubbed transition over at least
+  60vh of scroll (the material spreads, floods, dims or dawns); never a CSS variable
+  that snaps when a section's top crosses the viewport. Never return to a previous
+  ground just to separate sections.
+- **Separate sections with composition, not paint:** scale, density, type size,
+  an inset panel or framed object, light falling on the persistent element, the
+  shader's intensity. An inset block of a second colour (≤ 40% of the viewport) is
+  fine; a whole-viewport repaint is not.
+- Per-item colour (one project = one colour) goes into small marks: the
+  item's figure, link and index dot. It never becomes the page ground.
+
+Contact-sheet test: count frames whose dominant background differs from the
+previous frame's. An event that floods and drains back counts as 2. More than 4
+changes or 3+ distinct grounds on desktop is a slideshow; `palette-check` flags it as
+`ground-churn` (3–4 changes is a warning the reviewer must justify).
 
 ### 4. Swap test
 Put your palette on a law firm, a coffee brand and a SaaS dashboard. If it fits all
