@@ -69,6 +69,26 @@ Choose the one the subject implies and write one line on why:
 - Keep contrast non-negotiable: body text 4.5:1, large text 3:1. On a saturated ground,
   use a deep or pale shade of the same hue before you reach for black or white.
 
+### 3b. Harmony: subject-derived is necessary, not sufficient
+Sampling the subject literally can give you a *list* (ten chart colours, every paint
+on the shelf) instead of a *palette*. The v2 portfolio painted ten full-screen chapters
+in matplotlib's tab10 (blue, orange, green, red, purple, brown, pink, grey, olive,
+cyan). Every colour was "real", and the result read as a rainbow: reviewer 6.7/10.
+
+- **At most 3 full-bleed grounds per page**, plus tints and shades of them. Other
+  sampled colours go into small marks: data, links, a single object, a highlight.
+- **One governing hue family carries ≥ 60% of the chromatic area.** Everything else
+  is a deliberate relationship to it: analogous, a single complement, or the same
+  hue at another lightness.
+- **Re-tune what you sample.** Treat source colours as raw stock, not final values.
+  Pull them onto a shared lightness and chroma rhythm in OKLCH (for example, all
+  grounds at L 0.30 or all at L 0.92, with chroma within ±0.04 of each other) so they
+  feel like one ink set. Out of the box, tab10/Material/Tailwind default colours
+  are palettes for *data*, not for a *place*.
+- **Squint test** on the desktop contact sheet: blur your eyes. You should be able to
+  name the page's colour world in two words ("deep teal and brass"). If you need a
+  list, cut it down.
+
 ### 4. Swap test
 Put your palette on a law firm, a coffee brand and a SaaS dashboard. If it fits all
 three, it isn't derived from the subject. Go back to step 1.
@@ -97,5 +117,11 @@ without a written reason tied to the subject.
   Collletttivo / open-source foundries) with that character.
 - Using "serif display + grotesk body + mono for labels" on every page is a house
   style, not a decision. Use mono labels only when the subject really prints data.
+- **Chosen-ness check.** A face can be "from the subject" and still look like no
+  choice was made: DejaVu, Arial, Helvetica, Times, Computer Modern and system-ui read
+  as fallbacks. Use the subject's lettering as a *brief*, then pick a face with the
+  same skeleton *and* evident character (contrast, width, terminals, a distinctive
+  italic). Exception: a deliberately raw style done with conviction, e.g. a page
+  that is literally a terminal.
 - Write the reason on the TYPE line: `Display: X, because the shop's job cards are
   stamped in it`.

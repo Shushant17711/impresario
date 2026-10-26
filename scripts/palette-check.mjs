@@ -66,6 +66,10 @@ export function analyse(colours) {
     flags.push(`neutral-led: ${(neutral * 100).toFixed(0)}% of rendered pixels are grey/cream/black. The subject's colour is a garnish, not the world.`);
   if (hueList.length && hueList[0].share > 0.9 && s.chromatic < 0.2)
     flags.push('one-accent-only: a single hue carries all colour on a neutral page (neutral + "one accent" recipe).');
+  // rainbow: many strong hue families each holding real area, none governing
+  const strong = hueList.filter((h) => h.share > 0.06);
+  if (s.chromatic > 0.3 && strong.length >= 5 && hueList[0].share < 0.45)
+    flags.push(`rainbow: ${strong.length} hue families each >6% of colour and none governs (top ${(hueList[0].share * 100).toFixed(0)}%). A list of colours, not a palette — see colour.md §3b.`);
   return { s, hueList, ground, top: px.slice(0, 12), flags };
 }
 

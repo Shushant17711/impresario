@@ -55,7 +55,8 @@ Follow `references/idea-engine.md`: mine the subject (verb, material, dimension,
 signature object, ritual, medium) → generate **5 concepts with 5 different
 generators** → score → pick the boldest buildable → make it twice as bold once →
 pass the anti-generic gate. Then do palette and type with `references/colour.md`
-(sample 8 subject colours → pick a structure → swap test). Write the director's sheet
+(sample 8 subject colours → pick a structure → harmonise: ≤ 3 full-bleed grounds, one
+governing hue → swap test; type must look chosen, not like a fallback). Write the director's sheet
 to `.impresario/direction.md` (keep it short). Don't show the user a menu of concepts; choose.
 
 ### 4. Choreograph the journey
@@ -73,7 +74,19 @@ CLOSE  a destination that belongs to this subject
 This is a shape for thinking, not a layout. Rename and reorder the beats for the
 subject: a repair shop can open on the broken state, a recipe can close on the
 plate, a portfolio may have no "climax" pin at all. For every transition, name the
-hand-off (what carries over). Apply the laws of flow
+hand-off (what carries over).
+
+**No repeated chapter template.** When a page has several parallel items (projects,
+services, products), never give them the same layout with a different colour. Two
+ways out, use both:
+- The **signature move works in every chapter.** The persistent element *becomes*
+  each item's evidence (the dots settle into this project's real result, the honey
+  becomes this jar), so the idea isn't only in the hero.
+- **Vary composition per chapter.** Write a different composition per item in the beat
+  sheet (full-bleed figure, split, type-only, scroll-across, object close-up,
+  overlapping). Feature the 2–3 strongest items big and fold the rest into one
+  compact index; ten equal chapters is a list, not a journey.
+Contact-sheet check: if three consecutive frames have the same skeleton, redesign one. Apply the laws of flow
 in `references/signature-moves.md`.
 
 ### 5. Build
@@ -122,6 +135,10 @@ sheets yourself and say in the handoff that the score is self-assessed.
 | Creativity (20%) | Can I finish "the site where you ___"? Could another subject use it unchanged? |
 | Usability (30%) | Clear offer + action, readable over effects, mobile composed, fast, escapable |
 | Content (10%) | Specific, confident copy in the subject's voice; no lorem, no buzzword soup |
+
+Squint at the desktop sheet first. Can you name the colour world in two words? Do
+three consecutive frames share a skeleton? Is the signature element visible beyond
+the hero?
 
 Anchors (use them, be harsh):
 - **4** — a template: hero + cards fading up; swap the logo and it fits any business.

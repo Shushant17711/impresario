@@ -17,6 +17,10 @@ test('a committed subject colour world passes', () => {
   const r = analyse(pal([['#E3A63A', 45], ['#9A4F14', 25], ['#F4DF9E', 20], ['#2A1608', 10]]));
   assert.deepEqual(r.flags, []);
 });
+test('tab10 rainbow is flagged', () => {
+  const r = analyse(pal([['#1f77b4', 12], ['#ff7f0e', 12], ['#2ca02c', 12], ['#d62728', 12], ['#9467bd', 12], ['#8c564b', 12], ['#e377c2', 12], ['#bcbd22', 8], ['#17becf', 8]]));
+  assert.ok(r.flags.some((f) => f.startsWith('rainbow')));
+});
 test('tonal blue world passes', () => {
   const r = analyse(pal([['#0B2A4A', 50], ['#1F5F8B', 25], ['#9FD3E6', 20], ['#E6F4F8', 5]]));
   assert.deepEqual(r.flags, []);

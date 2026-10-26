@@ -9,7 +9,28 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { CDP, launchChrome, openPage, goto, evaluate, setViewport, setReducedMotion, screenshot, sleep, toFileUrl } from './lib/cdp.mjs';
-import { filmstrip } from './lib/png.mjs';
+import { decodePNG, encodePNG } from './lib/png.mjs';
+
+// Readable contact sheet: a grid of thumbnails (cols x rows), not a 7000px strip.
+function grid(frames, { cols, thumbW, gap = 10, bg = [34, 34, 34] }) {
+  const d = frames.map((f) => decodePNG(f));
+  const scale = thumbW / d[0].width;
+  const thumbH = Math.round(d[0].height * scale);
+  const rows = Math.ceil(d.length / cols);
+  const W = cols * thumbW + (cols + 1) * gap, H = rows * thumbH + (rows + 1) * gap;
+  const out = Buffer.alloc(W * H * 4);
+  for (let i = 0; i < W * H; i++) { out[i * 4] = bg[0]; out[i * 4 + 1] = bg[1]; out[i * 4 + 2] = bg[2]; out[i * 4 + 3] = 255; }
+  d.forEach((img, n) => {
+    const ox = gap + (n % cols) * (thumbW + gap), oy = gap + Math.floor(n / cols) * (thumbH + gap);
+    const s = img.width / thumbW;
+    for (let y = 0; y < thumbH; y++) for (let x = 0; x < thumbW; x++) {
+      const sx = Math.min(img.width - 1, Math.floor(x * s)), sy = Math.min(img.height - 1, Math.floor(y * s));
+      const si = (sy * img.width + sx) * 4, di = ((oy + y) * W + ox + x) * 4;
+      out[di] = img.data[si]; out[di + 1] = img.data[si + 1]; out[di + 2] = img.data[si + 2]; out[di + 3] = 255;
+    }
+  });
+  return encodePNG(W, H, out);
+}
 
 const [target, out = '.impresario/shots', tag = 'r1'] = process.argv.slice(2);
 if (!target || target === '--help') {
@@ -71,7 +92,7 @@ for (const vp of viewports) {
     frames.push(png);
   }
   const sheet = path.join(out, `${tag}-${vp.name}-sheet.png`);
-  fs.writeFileSync(sheet, filmstrip(frames, { height: vp.m ? 420 : 260, background: [40, 40, 40] }));
+  fs.writeFileSync(sheet, grid(frames, vp.m ? { cols: 6, thumbW: 260 } : { cols: 4, thumbW: 480 }));
   problems += logs.length;
   console.log(`[${vp.name}] ${frames.length} frames → ${sheet}`);
   console.log(`[${vp.name}] console errors: ${logs.length ? '\n  ' + logs.join('\n  ') : 'none'}`);
