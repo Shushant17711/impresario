@@ -66,7 +66,8 @@ CONTINUITY DEVICE: ...                     (what persists/travels between sectio
 SECTION JOURNEY: 1 ... → 2 ... → 3 ... → close ...   (each is a *state* of the world)
 OPENING RITUAL: ...   CLOSING MOMENT: ...
 TYPE: display face + text face, how type moves
-PALETTE: bg / ink / accent (+ how it shifts along the journey)
+PALETTE: structure (colour.md §2) + 8 sampled subject colours → roles, 2+ states along the journey
+TYPE REASON: where in the subject's world this lettering comes from
 PERSONALITY LAYER: cursor, hover, sound? micro-reactions
 VISUAL SOURCE: shader / procedural 3D / SVG illustration / kinetic type / CSS 3D
 ASSUMPTIONS I MADE: ...
@@ -101,3 +102,7 @@ looks great, and use a styled generative stand-in now.
 - The animation would work identically on any other subject.
 - You cannot finish "the site where you ___" with a verb that is not "read" or "scroll".
 - Purple-to-blue gradient, glassmorphism cards, and Inter everywhere with no reason.
+- Paper/cream ground + black ink + one orange/red/amber accent, or near-black + one
+  hot accent; >85% of the page grey/cream/black (see `colour.md`).
+- The site could be swapped with the last impresario build: same preloader counter,
+  labelled cursor, grain, serif-display + mono-labels, dark climax flip, giant wordmark.

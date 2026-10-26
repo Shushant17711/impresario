@@ -169,7 +169,7 @@ with clip-path wipes in the world's material. Multi-page: CSS
 `@view-transition { navigation: auto; }`.
 
 ### §14 Section theme shifts
-Each section declares `data-theme="dark|cream|accent"`; a ScrollTrigger per section
+Each section declares `data-theme="<subject state>"` (e.g. `dawn|noon|sodium`, `cracked|rewired|booted`; never a generic `dark|cream|accent` set); a ScrollTrigger per section
 tweens CSS variables on `<html>` when its centre crosses the viewport centre. The
 persistent background (shader or solid) changes smoothly instead of hard cuts.
 

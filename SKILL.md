@@ -34,9 +34,9 @@ subject; you hand back the site people describe to friends as **"the site where 
 
 ## The run
 
-Required reading is only three files, at the stage that needs them:
-`exemplars.md` (stage 2), `idea-engine.md` (stage 3), `signature-moves.md` (stages
-4–5). Everything under "Deeper references" is optional.
+Required reading is only four files, at the stage that needs them:
+`exemplars.md` (stage 2), `idea-engine.md` + `colour.md` (stage 3),
+`signature-moves.md` (stages 4–5). Everything under "Deeper references" is optional.
 
 ### 1. Absorb (no questions)
 Read the request. Extract subject, audience, the one action (buy / book / hire /
@@ -54,8 +54,9 @@ exemplars file is enough; don't stall on it.
 Follow `references/idea-engine.md`: mine the subject (verb, material, dimension,
 signature object, ritual, medium) → generate **5 concepts with 5 different
 generators** → score → pick the boldest buildable → make it twice as bold once →
-pass the anti-generic gate. Write the director's sheet to `.impresario/direction.md`
-(keep it short). Don't show the user a menu of concepts; choose.
+pass the anti-generic gate. Then do palette and type with `references/colour.md`
+(sample 8 subject colours → pick a structure → swap test). Write the director's sheet
+to `.impresario/direction.md` (keep it short). Don't show the user a menu of concepts; choose.
 
 ### 4. Choreograph the journey
 Before coding, write the beat sheet (one line each):
@@ -66,23 +67,27 @@ HERO   signature move begins; the persistent element is introduced
 BUILD  2–4 sections = successive *states* of the world, each showing real content
 CLIMAX the boldest moment (longest pin, biggest transformation)
 RELEASE quiet, big type, breathing room; proof / offerings / details
-CLOSE  a destination: giant wordmark, the object returns, a toy, the CTA
+CLOSE  a destination that belongs to this subject
 ```
 
-For every transition, name the hand-off (what carries over). Apply the laws of flow
+This is a shape for thinking, not a layout. Rename and reorder the beats for the
+subject: a repair shop can open on the broken state, a recipe can close on the
+plate, a portfolio may have no "climax" pin at all. For every transition, name the
+hand-off (what carries over). Apply the laws of flow
 in `references/signature-moves.md`.
 
 ### 5. Build
 - Start from `assets/motion-kit.js` (copy it into the project) + the CDN stack in
   `signature-moves.md`; in React/Next/Vite use the npm equivalents.
 - Build the **signature move first**, in full fidelity, then the sections around it.
-- Craft layer is the floor, not the idea: masked type reveals, custom cursor with
-  labels, magnetic CTAs, velocity-reactive marquee/skew, clip-path media reveals,
-  section theme shifts, grain. Use those that fit the world's material.
-- Art direction: one display face with character (e.g. from Google Fonts/Fontshare —
-  not Inter-for-everything) + one text face; palette of 2–3 colours + one accent
-  derived from the subject's material; type scale with real drama (display 10–20vw).
-  `references/direction.md`, `craft.md`, `tells.md` go deeper.
+- Craft layer is a menu, not a checklist: masked type reveals, cursor, magnetic CTAs,
+  velocity marquee/skew, clip-path reveals, theme shifts, grain. Pick **at most three**
+  that the subject's material explains. These are *not* defaults: a labelled custom
+  cursor, a grain overlay, a preloader counter, a light→dark "climax" flip, a giant
+  wordmark footer. Every earlier run used all five, and that's why the sites look like siblings.
+- Art direction follows `references/colour.md`: palette structure and type chosen
+  from the subject's world, never "neutral ground + one accent" or a default font
+  pair. Type scale with real drama. `direction.md`, `craft.md`, `tells.md` go deeper.
 - Real semantics underneath: headings, real links/buttons, content in DOM, keyboard
   focus visible, `prefers-reduced-motion` shows final states, no-JS still readable.
 - Mobile: same idea, simplified mechanism, composed for 390 px — not shrunken desktop.
@@ -95,7 +100,10 @@ no manifest or setup needed:
 node <skill>/scripts/shoot.mjs http://localhost:8080/ .impresario/shots r1
 ```
 
-It shoots desktop 1440, phone 390 and reduced-motion, stops inside every pinned
+Then `node <skill>/scripts/palette-check.mjs .impresario/shots r1` — it measures
+rendered colour from the frames; exit 1 (a generated-default palette) is a blocker.
+
+`shoot.mjs` shoots desktop 1440, phone 390 and reduced-motion, stops inside every pinned
 ScrollTrigger at 10/35/65/90 % progress, writes a contact sheet per viewport
 (`r1-desktop-sheet.png` …) and lists console errors (exit 2 = errors = blocker).
 WebGL renders via SwiftShader. If you use your own capture: wait real time, never
@@ -110,7 +118,7 @@ sheets yourself and say in the handoff that the score is self-assessed.
 
 | Criterion | Ask |
 | --- | --- |
-| Design (40%) | Composition, type drama, palette restraint, detail; would a designer screenshot it? |
+| Design (40%) | Composition, type drama, a palette and typeface that belong to *this* subject (swap test), detail; would a designer screenshot it? |
 | Creativity (20%) | Can I finish "the site where you ___"? Could another subject use it unchanged? |
 | Usability (30%) | Clear offer + action, readable over effects, mobile composed, fast, escapable |
 | Content (10%) | Specific, confident copy in the subject's voice; no lorem, no buzzword soup |

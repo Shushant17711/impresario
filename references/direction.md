@@ -51,6 +51,7 @@ Rules:
 - **Derive it.** The accent should come from the subject: the red of the shopfront, the
   oxidised copper, the tomato sauce, the sodium lamp. If you picked a colour before
   knowing the subject, go back.
+-   **Follow `colour.md` first.** It has the procedure and the measured failures.
 -   **Avoid assistant palettes.** Violet/indigo dominance, cream-ground-with-terracotta,
   orange-on-graphite, and dark-ground-with-neon-card are common generated defaults. Both
   the colour family and the proportion must come from the subject, not this document.

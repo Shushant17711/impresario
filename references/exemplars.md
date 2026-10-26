@@ -23,11 +23,14 @@ Every site below does most of these. Generic AI sites do almost none.
 5. **An opening ritual.** Preloader/intro that hands off into the hero (counter → curtain
    → title rises), so the first second already feels authored.
 6. **A personality layer.** Custom cursor, magnetic buttons, hover distortion, sound
-   toggle, micro-reactions to velocity. Small, everywhere, consistent.
-7. **Restraint in palette, excess in motion.** 2–3 colours + one accent, one or two
-   typefaces, but motion with real choreography (staggers, overlaps, expo easings).
-8. **A closing moment.** The footer is a destination (giant wordmark, a return to the
-   opening object, an interactive toy), not a link dump.
+   toggle, micro-reactions to velocity. Choose the one or two that come from the subject
+   (a probe, a brush, a torch). A labelled blend-mode dot cursor isn't personality.
+7. **Colour is the subject's, and it's committed.** Igloo is *all* ice blue, neal.fun's
+   Deep Sea is *all* depth, Wrapped is *all* saturated blocks. Standout sites commit to the
+   subject's colour world. They don't sit on a neutral page with one accent. Motion still
+   has real choreography (staggers, overlaps, expo easings). See `colour.md`.
+8. **A closing moment.** The footer is a destination (a return to the opening object, the
+   finished state of the world, an interactive toy; a giant wordmark is the overused default), not a link dump.
 
 ## Exemplar studies
 
@@ -75,9 +78,9 @@ Every site below does most of these. Generic AI sites do almost none.
 - **Move:** strong *world material* (ice) applied to everything — type, transitions,
   UI — plus a scroll camera through discrete scenes.
 - **Why:** total material consistency makes it feel like a single crafted object.
-- **Translation:** pick ONE material for the subject (paper, ink, smoke, chrome,
+- **Translation:** pick ONE material for the subject (rust, honey, smoke, chrome, solder, glacier,
   clay, neon, water) and let every transition be that material behaving
-  (paper folds, ink bleeds, smoke disperses).
+  (rust spreads, honey pours, smoke disperses).
 
 ### Lusion / Active Theory (studio sites)
 - **Experience:** real-time 3D with physics, fluid sims, heavy post-processing; the
