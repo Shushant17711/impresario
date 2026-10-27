@@ -355,6 +355,18 @@ behind the actor (z-index layering) to sell depth.
   background prints as plain metal, so **no cut-out is needed**. Generate it as an SVG in
   Node from a greyscale pixel dump (`magick … -colorspace gray txt:-`), then raster it to
   webp (the SVG is ~850 KB). Check the result at full size before showing it.
+- **README tables make good card visuals.** Render them with `gh api markdown` at the
+  card's display width and 2× scale, then crop. They read far better than a screenshot
+  of a code block.
+- **Chaotic-attractor heroes (Lorenz, Aizawa):** let the integrator run a few hundred
+  steps before drawing, or the start shows as a dense spiral blob. To fly the camera
+  into it, aim at where the drawn points cluster. The maths centre of a lobe is an empty hole and gives a blank frame.
+- **Masks:** an iris or lens built from a solid-fill SVG looks like a black disc in
+  recorded films. Use `clip-path`. Size overlays from a fixed base, never from the
+  bounding box of an element that's already scaled.
+- **Decorative duplicates of headings** (`aria-hidden` ghost type) are `div`s, not
+  `h2`/`h3`, or the reduced-motion and accessibility checks count hidden headings.
+- **Rings with few cards** hold each card front-on, then turn, on desktop too.
 - **Delete assets last.** Rewrite the HTML first, then remove files nothing references
   (`grep -r` the filename), or you'll be recapturing deleted media.
 
