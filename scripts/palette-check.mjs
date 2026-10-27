@@ -86,12 +86,16 @@ export function oklabDist(a, b) {
   const [x, y] = [ab(a), ab(b)];
   return Math.hypot(x[0] - y[0], x[1] - y[1], x[2] - y[2]);
 }
+// near-blacks (#000, #0a0a0b, #111, a tinted #120a05) read as one ground to the eye;
+// a dark ground lit by a glow shifts its dominant bucket without being a repaint
+const isDarkGround = (o) => o.L < 0.24 && o.C < 0.04;
+const sameGround = (a, b, threshold) => (isDarkGround(a) && isDarkGround(b)) || oklabDist(a, b) <= threshold;
 export function groundChanges(grounds, threshold = 0.12) {
   const changes = [];
   for (let i = 1; i < grounds.length; i++)
-    if (oklabDist(grounds[i - 1].o, grounds[i].o) > threshold) changes.push(i);
+    if (!sameGround(grounds[i - 1].o, grounds[i].o, threshold)) changes.push(i);
   const distinct = [];
-  for (const g of grounds) if (!distinct.some((d) => oklabDist(d.o, g.o) <= threshold)) distinct.push(g);
+  for (const g of grounds) if (!distinct.some((d) => sameGround(d.o, g.o, threshold))) distinct.push(g);
   return { changes, distinct };
 }
 

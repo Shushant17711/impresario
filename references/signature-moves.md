@@ -326,6 +326,30 @@ the content; **cylinder text** (letters placed with `rotateY(i*θ) translateZ(r)
 track rotated on scroll); type walls in a CSS 3D room. Type passes in front of *and*
 behind the actor (z-index layering) to sell depth.
 
+## Field notes from polish passes (portfolio v5)
+
+- **Actor under the display type.** When the hero actor shares the frame with the
+  name, layer it *behind* the type (z-order or a second canvas). Don't steer it around the letters. The
+  plume still glows through the gaps and the name stays legible.
+- **Moves that deform the name burst and re-form.** A plume or shatter may split the
+  letters for a beat, but the frame at rest must show the whole name. Reviewers judge rest frames.
+- **One exact home-ground value** in CSS, the renderer `setClearColor` and every shader
+  base colour. #000, #0a0a0b and #111 side by side read as seams.
+- **The shadow camera follows the actor** (`light.target = actor`, a tight ortho frustum
+  around it) so a scaled-up hero gets crisp self-shadows instead of blurry blobs.
+- **Perspective ground planes are projected in JS** (three.js `Vector3.project` or
+  your own matrix), not CSS `rotateX`, when labels and leader lines must land on points.
+  `getScreenCTM` ignores CSS 3D transforms.
+- **Don't open a mask onto an empty layer.** Before an iris or zoom-through opens, the next scene's
+  content must already be visible inside it, or delay the reveal. A black disc in
+  the film means this rule was broken.
+- **DOM 3D rings snap card-to-card on phone** (hold ~80% of the scrub, rotate briefly)
+  so frames never catch half-turned, clipped cards.
+- **A card grid taller than the viewport pans after it settles.** Don't shrink text
+  below the 17px/16px floor to make it fit.
+- **Delete assets last.** Rewrite the HTML first, then remove files nothing references
+  (`grep -r` the filename), or you'll be recapturing deleted media.
+
 ## Performance and fallback essentials
 - Animate `transform`, `opacity`, `clip-path`, CSS vars, shader uniforms; avoid layout props.
 - One owner per property (don't let CSS transitions and GSAP fight).

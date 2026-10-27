@@ -245,6 +245,10 @@ under the nav, offer/prices reachable in the first third of the page or from the
 favicon + title + meta description, no horizontal scroll at 390 px, focus visible.
 
 Fix the lowest-scoring issue, re-capture with a new tag (`r2`, `r3`) and re-review.
+Give each new reviewer the previous round's report and ask what changed. A fresh reviewer
+with no history drifts ±0.4, which hides real progress (v5 polish: 7.0 → 6.6 → 6.9 while
+fixing every listed issue).
+
 Do at most **three design rounds**, plus one confirmation capture after the last
 review's fixes. If the score is still under 8, ship it and report the score honestly
 with the reviewer's ranked next fixes. Never inflate the score to finish.

@@ -277,6 +277,17 @@ window.__impresarioMeasure = function measure() {
     const cs = getComputedStyle(el);
     if (cs.position === 'fixed' && rect.width <= vw + 1) continue;
     if (cs.overflowX === 'hidden' || cs.overflowX === 'clip') continue;
+    // clipped by an ancestor that itself stays inside the viewport (pinned stages,
+    // fixed scene layers, masked reveals): the visitor never sees or scrolls to it
+    let clipped = false;
+    for (let a = el.parentElement; a && a !== document.body; a = a.parentElement) {
+      const acs = getComputedStyle(a);
+      if (acs.overflowX === 'hidden' || acs.overflowX === 'clip' || acs.overflow === 'hidden' || acs.overflow === 'clip') {
+        const ar = a.getBoundingClientRect();
+        if (ar.right <= vw + 1 && ar.left >= -1) { clipped = true; break; }
+      }
+    }
+    if (clipped) continue;
     out.overflow.push({
       selector: sel(el),
       left: Math.round(rect.left),

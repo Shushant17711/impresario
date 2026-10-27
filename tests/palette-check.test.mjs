@@ -39,3 +39,10 @@ test('per-section repaint is counted as churn; one stable ground is not', () => 
   assert.equal(r.changes.length, 1);
   assert.equal(r.distinct.length, 2);
 });
+
+test('near-black shades (#000, #0a0a0b, #111) count as one ground, not churn', () => {
+  const g = (rgb) => ({ o: oklch(rgb) });
+  const r = groundChanges([g([0, 0, 0]), g([17, 17, 17]), g([10, 10, 11]), g([0, 0, 0]), g([17, 17, 17]), g([10, 10, 11])]);
+  assert.equal(r.changes.length, 0);
+  assert.equal(r.distinct.length, 1);
+});
