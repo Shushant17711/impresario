@@ -88,9 +88,13 @@ in the space. **Grammar:** the visitor is *in* a place from the first frame.
 
 Image generation is off the table (cost). Use, in this order:
 
-1. **The subject's own real media:** screenshots of their real projects (capture live
-   demos or README images headlessly), their photos, logos, charts and audio. Real work
-   on a 3D ribbon beats any illustration.
+1. **The subject's own real media,** *only if it looks good*: photos, logos, attractive
+   charts/figures, product shots, audio, live demo UIs. **Never put raw GitHub pages,
+   code, READMEs or text-heavy screenshots on cards.** At card size they read as dark
+   walls of text (portfolio v5 failed review on exactly this). Instead, **design the
+   card**: name, one-line purpose, the strongest real number, and one clean visual (a
+   well-cropped real figure, or an SVG mini-diagram of the idea), all composed in
+   DOM/SVG.
 2. **Authored SVG illustration in a confident flat or engraved-line style.** An LLM
    can draw a convincing truck, crane, jar, drone, temple column, window or figure
    silhouette as layered SVG (shapes + hatching patterns for an engraving feel). Build

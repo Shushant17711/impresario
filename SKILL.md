@@ -108,6 +108,16 @@ does · what content moves and how · transition OUT`. Requirements
   cards on a path). The subject's real items (projects, products, services) ride them.
 - **Imagery plan:** for every scene, name the visual source (real media / SVG
   illustration / CC0 model / procedural 3D / type) and list it in `.impresario/assets.md`.
+- **The actor is a hero, not a sticker.** Build it with real detail (≥ 6 distinct parts,
+  proper materials and lighting, procedural or CC0). Frame it **big** (≥ 35% of
+  viewport height) in at least 3 scenes, as the subject of the shot. When it's small,
+  it must be *doing* something, never parked in a corner.
+- **Composition per scene, from a vocabulary:** centred hero object with type around
+  it · full-bleed type with the actor crossing · split screen · object close-up with
+  caption · 3D ring/ribbon centre · scattered stack · top-down map · tilted plane ·
+  type-only interlude · room/camera pan. Write it on each storyboard line. **No
+  composition more than twice, never in consecutive scenes.** "Headline left, card
+  right" over and over is the default that kills variety.
 - **No wallpaper:** any simulation must *touch* the content (it shapes, carries,
   reveals or breaks headings and cards). A background effect alone doesn't count as a scene.
 
@@ -226,7 +236,10 @@ Flow check on the sheet: does every frame *arrive from* the previous one? Is the
 "oh" moment? Big empty frames, a section that is just cards fading up, or the
 signature move being small in its frame → redesign that state.
 
-Hygiene (fix before scoring): no clipped glyphs (descenders under masks, filters
+Hygiene (fix before scoring): **readable text over effects:** body ≥ 17px desktop and
+≥ 16px phone, small labels ≥ 12px, and body text ≥ 7:1 against what's *actually*
+rendered behind it (add a local scrim or panel over 3D or shaders); delete copy that's
+illegible in the captures. No clipped glyphs (descenders under masks, filters
 eating thin type on phone), fixed nav readable over every section, nothing hidden
 under the nav, offer/prices reachable in the first third of the page or from the nav,
 favicon + title + meta description, no horizontal scroll at 390 px, focus visible.
