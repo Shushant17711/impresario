@@ -347,6 +347,14 @@ behind the actor (z-index layering) to sell depth.
   so frames never catch half-turned, clipped cards.
 - **A card grid taller than the viewport pans after it settles.** Don't shrink text
   below the 17px/16px floor to make it fit.
+- **Stylising a person's photo (no image generation).** The owner rejected each of these on sight:
+  edge-detection "line art" (scribbly, unflattering), a hard background cut-out (it bit
+  into the cheek wherever skin was as bright as the wall) and a tinted photo ("just the
+  photo with a yellow tint"). What worked was an **engraving**: horizontal lines whose
+  thickness follows darkness, dark ink on a light metal disc (gold medallion). The bright
+  background prints as plain metal, so **no cut-out is needed**. Generate it as an SVG in
+  Node from a greyscale pixel dump (`magick … -colorspace gray txt:-`), then raster it to
+  webp (the SVG is ~850 KB). Check the result at full size before showing it.
 - **Delete assets last.** Rewrite the HTML first, then remove files nothing references
   (`grep -r` the filename), or you'll be recapturing deleted media.
 

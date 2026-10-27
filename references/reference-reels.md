@@ -72,7 +72,7 @@ in the space. **Grammar:** the visitor is *in* a place from the first frame.
 1. **Scene budget:** roughly one new composition per 100vh of scroll, and ≥ 8 scenes for
    a full site. A scene is a different arrangement, camera position or framing, not
    the same layout with new text.
-2. **One actor** (object or character) appears in ≥ 60% of scenes and does a different
+2. **Actors:** one site-wide actor only when the subject is one thing (the truck, the bottle). For a person or a multi-product brand, each item gets its own actor, plus a hero motif from the real field (see SKILL.md, "Actors that tell the truth"). Either way, each actor appears in its scenes and does a different
    verb in each (lift, drive, pour, unfold, break, land).
 3. **≥ 4 different transition types** per site from: iris/portal, material wipe (ink,
    torn paper, liquid, smoke), zoom-through (into a window, screen or eye), whip pan,
@@ -88,13 +88,22 @@ in the space. **Grammar:** the visitor is *in* a place from the first frame.
 
 Image generation is off the table (cost). Use, in this order:
 
-1. **The subject's own real media,** *only if it looks good*: photos, logos, attractive
-   charts/figures, product shots, audio, live demo UIs. **Never put raw GitHub pages,
-   code, READMEs or text-heavy screenshots on cards.** At card size they read as dark
-   walls of text (portfolio v5 failed review on exactly this). Instead, **design the
-   card**: name, one-line purpose, the strongest real number, and one clean visual (a
-   well-cropped real figure, or an SVG mini-diagram of the idea), all composed in
-   DOM/SVG.
+1. **The subject's own real media, captured properly.** Real screenshots, figures,
+   photos and product shots beat anything you draw. The owner judged designed cards with
+   SVG mini-diagrams "much worse than the screenshots": abstract diagrams read as
+   generic, while real work reads as proof. What failed earlier was *bad* screenshots, not
+   screenshots as such:
+   - **Source the best image, not the repo page.** In order: images embedded in the
+     README/docs/results folders (download the originals from raw.githubusercontent.com);
+     the live demo/app; then a capture of the most visual part. Never use a file
+     listing, a wall of code or a whole README page.
+   - **Capture at 2× density** (`setViewport(..., dsf = 2)`) and export at ≥ 2× the
+     displayed size (webp ~85). Crop tight to the meaningful region.
+   - **Legibility check:** any text inside the screenshot must be readable at the card's
+     displayed size in the desktop capture. If it isn't, crop tighter or pick another image.
+   - **Frame it:** the screenshot takes ≥ 60% of the card, with a thin border and soft
+     shadow (window chrome for UI shots), plus name, one line and the strongest real number.
+   - Use SVG mini-diagrams only for items that have no visual at all.
 2. **Authored SVG illustration in a confident flat or engraved-line style.** An LLM
    can draw a convincing truck, crane, jar, drone, temple column, window or figure
    silhouette as layered SVG (shapes + hatching patterns for an engraving feel). Build

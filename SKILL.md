@@ -101,7 +101,18 @@ does · what content moves and how · transition OUT`. Requirements
 (`reference-reels.md` §2):
 - **≥ 8 scenes**, roughly one new composition per 100vh; no two consecutive scenes share
   a layout skeleton.
-- **One actor** (object or character) in ≥ 60% of scenes, with a different verb in each.
+- **Actors that tell the truth about the subject.** A single site-wide actor works when
+  the subject *is* one thing (a honey farm's honey, a truck company's truck). For a
+  **person, studio or multi-product brand**, give **each item its own actor drawn from that item**
+  (the drone swarm for the drone project, the lattice for the decoder) plus a hero
+  motif from the person's *actual field*. One project's object (a spacecraft) must never
+  become the whole site's mascot. It rewrites who the person is: portfolio v5's lander
+  made an ML researcher read as "an aerospace student". The same goes for copy: no
+  site-wide metaphor vocabulary (altitude, mission, pilot, cockpit) unless it's the
+  person's real field. Swap test: show the hero frame to a stranger and ask what this person
+  does. If they name the metaphor, not the field, change it.
+- **Every scene has an actor** (object or character) that does something; reuse an actor
+  across scenes only when it truly belongs to all of them.
 - **≥ 4 different transition types** (iris/portal, material wipe, zoom-through, whip
   pan, shatter, environment-becomes-layout, scale jump, pull-back).
 - **≥ 2 content mechanics in 3D space** (ribbon, ring, stack, room wall, cylinder text,
