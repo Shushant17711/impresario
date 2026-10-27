@@ -28,6 +28,11 @@ that holds up, because the honey *is* the colour and it takes over the viewport.
 - **Graphite + ember/neon:** near-black ground with one orange, lime or mint accent
   (the "dev tool" or "terminal" look).
 - **Violet/indigo wash**, and purple-to-blue gradients.
+- **Sci-fi neon:** navy-tinted "black", neon cyan glows on rims, lines and text,
+  pink/magenta energy, mint "success" accents. This is the AI default for anything
+  space, tech, quantum or AI. The user called it "AI slop" on sight (portfolio v5).
+  Real space photography is **true neutral black**, white sunlight, a *thin* deep-blue
+  atmosphere, gold foil, and fire that's **orange-white, never pink or blue**.
 - **Wellness beige:** sand + sage + terracotta.
 - **Neutral + one accent** as a structure. When 85%+ of the rendered pixels are grey,
   cream or black, the subject's colour is just decoration.
@@ -93,6 +98,14 @@ not by a rare true sample.
   default cream/off-white `#f4e7c5`-type colours. Keep contrast ≥ 4.5:1 for body text.
 - **Glance test:** shrink a hero frame to a thumbnail. Would a stranger name the
   material in one word? If not, fix the colour before anything else.
+
+### 3a+. Photograph test (for tech, space, science and AI subjects)
+Before choosing hex values, picture a *real photograph* of the subject's world (NASA
+archive, a lab, a server room, a factory, a cockpit) and take the palette from that
+photo, not from "futuristic UI". Black stays neutral (chroma < 0.01), and glow is for
+light sources that physically glow (engines, screens, lamps), each in its real colour.
+UI text is white or warm grey, not tinted cyan. If the palette would suit a generic
+"AI startup" hero, it fails.
 
 ### 3b. Harmony: subject-derived is necessary, not sufficient
 Sampling the subject literally can give you a *list* (ten chart colours, every paint

@@ -60,9 +60,16 @@ export function analyse(colours) {
     flags.push('paper+ink+ember: pale/cream ground, near-black ink, red-orange-amber accent. This is the default "tasteful editorial" palette every model reaches for.');
   if (s.nearBlack > 0.4 && (emberOfChroma > 0.4 || neonOfChroma > 0.4))
     flags.push('graphite+ember/neon: near-black ground with one hot orange or acid accent. Default "dark tech" palette.');
+  const navy = sum((o) => o.L < 0.25 && o.C > 0.025 && o.H >= 235 && o.H <= 285);
+  const neonCyan = sum((o) => o.L > 0.6 && o.C > 0.1 && o.H >= 185 && o.H <= 230);
+  const magenta = sum((o) => o.C > 0.12 && (o.H >= 330 || o.H <= 15) && o.L > 0.45);
+  if (navy > 0.35 || (navy > 0.2 && (neonCyan + magenta) / chromaTot > 0.03))
+    flags.push(`sci-fi-navy: ${(navy * 100).toFixed(0)}% of the page is navy-tinted "black"${neonCyan + magenta > 0.005 ? ' with neon cyan/magenta light' : ''}. That's the AI default "tech/space/AI" look. Use neutral black and real light colours (colour.md §3a+), or write a PALETTE EXCEPTION (e.g. a deep-ocean subject).`);
   if (s.violet / chromaTot > 0.45 && s.chromatic > 0.1)
     flags.push('violet/indigo-led: purple-blue dominates the colour. Default AI-startup palette.');
-  if (neutral > 0.86)
+  // neutral-led targets cream/grey paper pages; a true-black ground lit by real light
+  // sources ("lit dark") is a legitimate structure, so only light neutrals count here
+  if (neutral > 0.86 && s.paleNeutral + s.warmPaper > 0.35)
     flags.push(`neutral-led: ${(neutral * 100).toFixed(0)}% of rendered pixels are grey/cream/black. The subject's colour is a garnish, not the world.`);
   if (hueList.length && hueList[0].share > 0.9 && s.chromatic < 0.2)
     flags.push('one-accent-only: a single hue carries all colour on a neutral page (neutral + "one accent" recipe).');
