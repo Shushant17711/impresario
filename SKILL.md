@@ -23,21 +23,25 @@ subject; you hand back the site people describe to friends as **"the site where 
    plausible one and build).
 2. **Concept before code.** A great site is one idea executed everywhere. Effects
    bolted on a template are the failure mode you exist to prevent.
-3. **Matter in motion, choreographed.** The page should feel *alive*: the subject's
-   own material moves: it pours, drips, cracks, blooms, swarms, bends, glows.
-   Scroll drives a journey, sections hand off, one thing persists. Lines drawing and
-   things fading in are supporting motion, not the show. Never "static sections that
-   fade up", and never "a nice illustration that animates" either.
-4. **Code-native beauty.** You have no photo shoot and no 3D artist. Shaders, kinetic
-   type, procedural 3D, SVG, CSS 3D, particles and grain are your camera. Never
-   ship grey boxes, emoji art or random stock URLs as the design.
+3. **A film of scenes, not wallpaper.** Scrolling plays a sequence of distinct scenes
+   (a new composition every ~100vh), with a camera that travels *through* a world,
+   one actor that keeps doing things, transitions that are events (portals, wipes,
+   zoom-throughs, shatters), and **content that itself moves** (cards on ribbons,
+   rings and stacks; type in 3D). The bar is `references/reference-reels.md`. A single
+   effect (particles, a blob, a swarm) behind static text panels is a **fail**, however
+   pretty, even if the effect is clever.
+4. **Real imagery without image generation.** Image generation is off (cost). Use the
+   subject's own real media (screenshots of their work, photos, logos, audio), authored
+   layered SVG illustration, CC0 3D models/HDRIs (Kenney, Poly Pizza, Poly Haven) and
+   procedural Three.js, plus kinetic type. Never ship grey boxes, emoji art or random
+   stock URLs as the design.
 5. **Look at what you built.** Render it in a real browser, screenshot it through the
    scroll, critique it like an Awwwards juror, and iterate before handing off.
 
 ## The run
 
-Required reading is four files, at the stage that needs them: `exemplars.md`
-(stage 2), `idea-engine.md` (stage 3), `signature-moves.md` (stage 4), and
+Required reading is five files, at the stage that needs them: `reference-reels.md`
+and `exemplars.md` (stage 2), `idea-engine.md` (stage 3), `signature-moves.md` (stage 4), and
 `colour.md` (stage 5, the colour and type pass). Invention and motion come first;
 colour and type serve them. Everything under "Deeper references" is optional.
 
@@ -47,7 +51,8 @@ download / explore), stack constraints. Missing details → invent plausible spe
 (name, tagline, three offerings, prices) and mark them as placeholders.
 
 ### 2. Study greatness
-Read `references/exemplars.md`. Its "common DNA" section is mandatory; pick the 2–3
+Read `references/reference-reels.md` first: it's the bar the user set, with six sites
+studied frame by frame. Then read `references/exemplars.md`. Its "common DNA" section is mandatory; pick the 2–3
 exemplar studies closest to this subject's *thinking* (not industry). Browsing is
 optional: do it only if a web fetch/browser tool is available — then open 1–3 current
 Awwwards Site of the Day winners and fill the deconstruction template. Otherwise the
@@ -90,8 +95,23 @@ ways out, use both:
 Contact-sheet check: if three consecutive frames have the same skeleton, redesign one. Apply the laws of flow
 in `references/signature-moves.md`.
 
-**Motion ambition (required for websites).** Write a `MOTION` block in the director's
-sheet before coding:
+**Storyboard (required for websites).** Before coding, write a `STORYBOARD` in the
+director's sheet, one line per scene: `#n · scroll range · camera · what the actor
+does · what content moves and how · transition OUT`. Requirements
+(`reference-reels.md` §2):
+- **≥ 8 scenes**, roughly one new composition per 100vh; no two consecutive scenes share
+  a layout skeleton.
+- **One actor** (object or character) in ≥ 60% of scenes, with a different verb in each.
+- **≥ 4 different transition types** (iris/portal, material wipe, zoom-through, whip
+  pan, shatter, environment-becomes-layout, scale jump, pull-back).
+- **≥ 2 content mechanics in 3D space** (ribbon, ring, stack, room wall, cylinder text,
+  cards on a path). The subject's real items (projects, products, services) ride them.
+- **Imagery plan:** for every scene, name the visual source (real media / SVG
+  illustration / CC0 model / procedural 3D / type) and list it in `.impresario/assets.md`.
+- **No wallpaper:** any simulation must *touch* the content (it shapes, carries,
+  reveals or breaks headings and cards). A background effect alone doesn't count as a scene.
+
+**Motion ambition.** Write a `MOTION` block too:
 - **Living material:** what physically *behaves* in the signature move: fluid, goo,
   cloth, particles/swarm, springs/physics, cracks, smoke, light, deformation. It must
   be something more than a path drawing or an element translating. Pick the strongest
@@ -118,7 +138,11 @@ would kill the signature move, keep the move and solve the colour another way.
 ### 6. Build
 - Start from `assets/motion-kit.js` (copy it into the project) + the CDN stack in
   `signature-moves.md`; in React/Next/Vite use the npm equivalents.
-- Build the **signature move first**, in full fidelity, then the sections around it.
+- Build **scene by scene in storyboard order**. Each scene includes its transition OUT,
+  and the actor's action in it. Build the imagery (SVG planes, models, captured
+  screenshots) before the animation, so the scenes have something to move.
+- Use the recipes in `signature-moves.md` §21–§28 for portals, wipes, zoom-throughs,
+  3D ribbons/rings/stacks, camera rooms and actors travelling along paths.
 - **Two different budgets. Don't confuse them:**
   - *Subject motion* (the material behaving, from your MOTION block): **unlimited and
     expected.** Build every item on the list. This is where the creativity lives.
@@ -152,9 +176,17 @@ WebGL renders via SwiftShader. If you use your own capture: wait real time, neve
 --enable-unsafe-swiftshader` or shaders come out black. `inspect.mjs` adds contrast /
 overflow / tap-target measurements.
 
+**Film the scroll** each round, too: `node <skill>/scripts/film.mjs http://localhost:8080/
+.impresario/film r1` writes four frames per screen (read the `-film.png` sheet in
+order) plus an mp4. Still contact sheets hide whether anything moves.
+
 **Review by someone who didn't build it.** If a subagent tool exists this is
-mandatory: give a fresh agent only the contact sheets, the frames, the one-sentence
-concept and this rubric — not your notes or your opinion. Without one, review the
+mandatory: give a fresh agent only the film sheet, the contact sheets, the frames, the
+one-sentence concept, `references/reference-reels.md` (the bar) and this rubric — not
+your notes or your opinion. The reviewer first counts, from the film: scenes (distinct
+compositions), actor appearances, transition types and 3D content mechanics, then
+compares the film to the reels. If it reads as "one effect behind static panels",
+the Creativity score is ≤ 3 and Design ≤ 5, however polished it is. Without one, review the
 sheets yourself and say in the handoff that the score is self-assessed.
 
 | Criterion | Ask |
@@ -178,10 +210,13 @@ the hero?
 
 Anchors (use them, be harsh):
 - **4** — a template: hero + cards fading up; swap the logo and it fits any business.
+- **5** — one effect (particles, blob, swarm, shader) behind static text panels:
+  wallpaper. Pretty doesn't rescue it.
 - **6** — competent and on-brand, with a nice effect, but the frames read as a
   normal website with animation on top, *or* a lovely illustration that only draws
-  and fades (no living material).
-- **8** — the subject's material visibly behaves and the visitor can push it; the
+  and fades.
+- **8** — the film reads like the reference reels: ≥ 8 distinct scenes, a camera that
+  travels, an actor that acts, ≥ 4 transition types, content moving in 3D; the
   contact sheet alone tells the story; at least one frame you'd show
   someone; flow is continuous; phone is composed, not shrunk.
 - **10** — Awwwards Site of the Day: the idea is unmistakable in a single frame and

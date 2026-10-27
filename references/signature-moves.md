@@ -255,6 +255,77 @@ Also strong: cloth or rope via Verlet constraints (a flag, a ribbon, a hanging s
 that swings with scroll velocity), and smoke or steam via a curl-noise shader (§5
 with `uVel` driving turbulence).
 
+## Reel mechanics (§21–§28): transitions, 3D content, camera, actors
+
+These are the moves from `reference-reels.md`. Each is a *scene ingredient*; combine
+2–3 per scene.
+
+### §21 Iris / portal transition (Nootturno's circle, ECHO's window)
+```js
+// next scene sits on top, revealed through a growing circle that starts at an object in the current scene
+gsap.fromTo('.scene--next', { clipPath: 'circle(0% at 62% 48%)' },
+  { clipPath: 'circle(150% at 62% 48%)', ease: 'none',
+    scrollTrigger: { trigger: '.portal', start: 'top top', end: '+=120%', scrub: true, pin: true } });
+```
+Make the circle's centre a real thing (the sun, a window, an eye, a lens), and scale the
+old scene up 1→1.4 at the same time, so it feels like flying *through* it.
+
+### §22 Material wipe (ink drip, torn paper, liquid)
+An SVG `<mask>` holds an ink-edge path (a wavy bottom edge with drips) that translates
+from -110% to 0 over the scene. For torn paper, use a jagged polygon edge plus a paper-white
+2px stroke and a shadow. Scrub it. The edge shape should come from the world (ink for a
+comic, honey for honey, static for a TV).
+
+### §23 Zoom-through (into a window, a screen, an eye)
+```js
+gsap.timeline({ scrollTrigger: { trigger: '.zoom', start: 'top top', end: '+=200%', scrub: 1, pin: true } })
+  .to('.zoom__frame', { scale: 12, transformOrigin: '50% 45%', ease: 'power2.in' })   // frame's hole fills the screen
+  .to('.zoom__inside', { scale: 1, opacity: 1 }, '<0.35');                             // next scene was inside the hole
+```
+The frame is an SVG with a transparent hole (window, monitor, eye). Inside it, already
+rendered and small, is the next scene.
+
+### §24 Curved 3D ribbon of cards (ECHO's featured projects)
+```css
+.ribbon { perspective: 1400px; } .ribbon__track { transform-style: preserve-3d; }
+.card { position:absolute; width:34vw; aspect-ratio:16/10; backface-visibility:hidden; }
+```
+```js
+const cards = gsap.utils.toArray('.card'), R = 900, gapDeg = 22;
+const place = (off) => cards.forEach((c, i) => { const a = (i * gapDeg - off) * Math.PI / 180;
+  gsap.set(c, { x: Math.sin(a) * R, z: Math.cos(a) * R - R, rotationY: (i * gapDeg - off) }); });
+ScrollTrigger.create({ trigger: '.ribbon', pin: true, end: '+=300%', scrub: true,
+  onUpdate: (s) => place(s.progress * gapDeg * (cards.length - 1)) });
+```
+Use the subject's real screenshots on the cards. Variants: a **ring** (place around a
+full 360°, rotate the track), a **hexagon** (6 cards, rotateY 60° steps), and a
+**flying stack** (cards start at random x/y/z/rotation and settle into a grid with stagger).
+
+### §25 Camera room (Nike store, corridor), CSS 3D, no WebGL needed
+A `.room` with `transform-style:preserve-3d` holds walls (`.wall--left` with `rotateY(90deg)
+translateZ(-50vw)`, and so on). The "camera" is the room's transform: scrub
+`rotateY`/`translateZ` to pan from wall to wall, then dolly in on a selected item. Items on
+walls are DOM, so they stay clickable and accessible. With Three.js, the same idea uses
+real lights and CC0 models.
+
+### §26 Actor on a path through sections (logistics truck)
+One fixed-position SVG/model actor and an invisible SVG path spanning the whole
+document. Use `MotionPathPlugin` with `scrollTrigger:{trigger:'body', scrub:1, start:0,
+end:'max'}`. Add per-scene actions on its own timeline: lift (a crane rotates and a
+container rises), drive (wheels spin with scroll velocity), board (scale down onto a ship).
+The actor should change *verb* in each scene, not just position.
+
+### §27 Environment becomes layout (the road)
+Draw the road or river or cable as a full-width SVG path whose thickness *is* a layout
+gutter; section blocks sit on its banks. Scrub `stroke-dashoffset` so the road is
+"laid" ahead of the actor. The road turning a corner is the section transition.
+
+### §28 Type as scenery
+Giant ghost type (`-webkit-text-stroke`, 18–30vw) moving in horizontal parallax opposite
+the content; **cylinder text** (letters placed with `rotateY(i*θ) translateZ(r)` and the
+track rotated on scroll); type walls in a CSS 3D room. Type passes in front of *and*
+behind the actor (z-index layering) to sell depth.
+
 ## Performance and fallback essentials
 - Animate `transform`, `opacity`, `clip-path`, CSS vars, shader uniforms; avoid layout props.
 - One owner per property (don't let CSS transitions and GSAP fight).
