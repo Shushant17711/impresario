@@ -29,7 +29,9 @@ await setViewport(cdp, sessionId, W, H, phone, 1);
 await goto(cdp, sessionId, url, { settle: 600 });
 const frames = [];
 const snap = async () => {
-  const { data } = await cdp.send('Page.captureScreenshot', { format: 'png', clip: { x: 0, y: 0, width: W, height: H, scale } }, sessionId);
+  // clip is in document coordinates: follow the current scroll position, or frames go blank
+  const sy = await evaluate(cdp, sessionId, 'scrollY');
+  const { data } = await cdp.send('Page.captureScreenshot', { format: 'png', clip: { x: 0, y: sy, width: W, height: H, scale } }, sessionId);
   const buf = Buffer.from(data, 'base64');
   fs.writeFileSync(path.join(dir, `${String(frames.length).padStart(4, '0')}.png`), buf);
   frames.push(buf);
@@ -40,7 +42,7 @@ const max = await evaluate(cdp, sessionId, 'document.documentElement.scrollHeigh
 for (let y = 0; y <= max + 1; y += H * step) {
   await evaluate(cdp, sessionId, `(() => { const l = window.__lenis; const y = ${Math.min(y, max)};
     if (l && l.scrollTo) l.scrollTo(y, { immediate: true }); else scrollTo(0, y); return 1; })()`);
-  await sleep(450);
+  await sleep(700); // scrubbed timelines with lag (scrub:1) need time to settle
   await snap();
 }
 await chrome.close();
